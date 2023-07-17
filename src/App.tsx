@@ -1,19 +1,19 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import BasicTable from './components/BasicTable';
+import Scores from './components/Scores';
 import Nav from './components/Nav';
+import Submit from './components/Submit';
+
 
 export default function App() {
   return (
     <Container maxWidth="xl">
-      <Box sx={{ my: 4 }}>
-        <Typography variant="h4" gutterBottom align="center">
-          Pubgolf
-        </Typography>
-        <BasicTable></BasicTable>
-      </Box>
+      <Typography variant="h4" gutterBottom align="center">
+        Pubgolf
+      </Typography>
+      <Scores></Scores>
+      <Submit></Submit>
       <Nav></Nav>
     </Container>
   );

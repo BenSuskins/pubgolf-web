@@ -2,7 +2,6 @@ import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import InfoIcon from '@mui/icons-material/Info';
-import TableRowsIcon from '@mui/icons-material/TableRows';
 import SportsBarIcon from '@mui/icons-material/SportsBar';
 import Paper from '@mui/material/Paper';
 
@@ -16,10 +15,6 @@ export default function Nav() {
         break;
       }
       case 1: {
-        //todo redirect; 
-        break;
-      }
-      case 2: {
         //todo redirect; 
         break;
       }
@@ -37,8 +32,7 @@ export default function Nav() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Scores" icon={<TableRowsIcon />} />
-        <BottomNavigationAction label="Submit" icon={<SportsBarIcon />} />
+        <BottomNavigationAction label="Scores" icon={<SportsBarIcon />} />
         <BottomNavigationAction label="Info" icon={<InfoIcon />} />
       </BottomNavigation>
     </Paper>
