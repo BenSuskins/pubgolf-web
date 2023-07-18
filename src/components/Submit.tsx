@@ -33,11 +33,22 @@ const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
     if (!score || !hole) {
       setErrors("Something is missing...");
     } else {
-      console.log("Score Submitted");
-      console.log("Score " + score);
-      console.log("Hole " + hole);
-      console.log("ID " + id);
-      handleClose();
+      const requestOptions = {
+        method: 'PUT'
+      };
+      fetch(`http://192.168.0.120:8080/api/v1/scores/${id}/${hole}/${score}`, requestOptions)
+        .then((resp) => {
+          if (resp.ok) {
+            handleClose();
+          } else {
+            return resp.json();
+          }
+        })
+        .then(json => setErrors(json.message))
+        .catch(error => {
+          console.error(error);
+          setErrors(errors);
+        });
     }
   }
 
