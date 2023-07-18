@@ -36,7 +36,7 @@ const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
       const requestOptions = {
         method: 'PUT'
       };
-      fetch(`http://192.168.0.120:8080/api/v1/scores/${id}/${hole}/${score}`, requestOptions)
+      fetch(`${process.env.REACT_APP_API_HOST}/api/v1/scores/${id}/${hole}/${score}`, requestOptions)
         .then((resp) => {
           if (resp.ok) {
             handleClose();

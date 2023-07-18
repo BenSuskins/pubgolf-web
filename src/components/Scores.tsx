@@ -14,7 +14,7 @@ export default function Scores() {
   const [errors, setErrors] = React.useState('')
 
   const getData = async () => {
-    fetch('http://192.168.0.120:8080/api/v1/scores')
+    fetch(`${process.env.REACT_APP_API_HOST}/api/v1/scores`)
       .then(response => response.json())
       .then(json => setRows(json))
       .catch(error => {
