@@ -7,22 +7,40 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert';
 
 export default function Scores() {
   const [rows, setRows] = React.useState<any[]>([])
+  const [errors, setErrors] = React.useState('')
 
-  React.useEffect(() => {
-    fetch('http://localhost:8080/api/v1/scores')
+  const getData = async () => {
+    fetch('http://192.168.0.120:8080/api/v1/scores')
       .then(response => response.json())
       .then(json => setRows(json))
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error(error);
+        setErrors(errors)
+      });
+  };
+
+  React.useEffect(() => {
+    getData();
+    const intervalCall = setInterval(() => {
+      getData();
+    }, 5000);
+    return () => {
+      clearInterval(intervalCall);
+    };
   }, []);
 
   return (
     <Box sx={{ width: '100%' }}>
+      {
+        errors ? <Box><Alert severity="error">{errors}</Alert><br></br> </Box> : ''
+      }
       <Paper sx={{ width: '100%', mb: 2 }}>
         <TableContainer >
-          <Table sx={{ minWidth: 750 }} size='medium'>
+          <Table size='medium'>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
