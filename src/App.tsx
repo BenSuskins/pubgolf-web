@@ -3,7 +3,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Scores from './components/Scores';
 import Nav from './components/Nav';
-import Submit from './components/Submit';
+import SubmitButton from './components/SubmitButton';
 
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
         Pubgolf
       </Typography>
       <Scores></Scores>
-      <Submit></Submit>
+      <SubmitButton></SubmitButton>
       <Nav></Nav>
     </Container>
   );

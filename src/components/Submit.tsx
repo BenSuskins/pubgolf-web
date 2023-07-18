@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -10,24 +8,41 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 
-export default function Submit() {
-  const [open, setOpen] = React.useState(false);
+interface SubmitProps {
+  openState: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
+}
+
+const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
   const [hole, setHole] = React.useState('');
   const [score, setScore] = React.useState('');
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [id] = React.useState(() => {
+    return localStorage.getItem("id");
+  });
+  const [errors, setErrors] = React.useState('');
+
+  const handleClose = () => {
+    setErrors('');
+    setHole('');
+    setScore('');
+    setOpen(false);
+  }
+
+  const submitScore = () => {
+    if (!score || !hole) {
+      setErrors("Something is missing...");
+    } else {
+      console.log("Score Submitted");
+      console.log("Score " + score);
+      console.log("Hole " + hole);
+      console.log("ID " + id);
+      handleClose();
+    }
+  }
 
   return (
     <Box>
-      <Box sx={{
-        position: 'fixed', bottom: (theme) => theme.spacing(8), right: (theme) => theme.spacing(2)
-      }} >
-        <Fab variant="extended" size="medium" color="primary" onClick={handleOpen}>
-          <AddIcon sx={{ mr: 1 }} />
-          Submit
-        </Fab>
-      </Box>
       <Modal
         open={open}
         onClose={handleClose}
@@ -46,6 +61,9 @@ export default function Submit() {
           <Typography id="modal-modal-title" variant="h6" component="h2" align='center' gutterBottom>
             Submit Score
           </Typography>
+          {
+            errors ? <Box><Alert severity="error">{errors}</Alert><br></br> </Box> : ''
+          }
           <Box
             component="form"
             autoComplete="off">
@@ -83,7 +101,7 @@ export default function Submit() {
                 inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: -10, max: 10 }}
               />
               <br></br>
-              <Button variant="contained" onClick={handleOpen}>Submit</Button>
+              <Button variant="contained" onClick={submitScore}>Submit</Button>
             </FormControl>
           </Box>
         </Box>
@@ -91,3 +109,5 @@ export default function Submit() {
     </Box >
   );
 }
+
+export default Submit;
