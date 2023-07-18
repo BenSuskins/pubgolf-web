@@ -40,20 +40,20 @@ export default function Scores() {
       }
       <Paper sx={{ width: '100%', mb: 2 }}>
         <TableContainer >
-          <Table size='medium'>
+          <Table sx={{ minWidth: 10 }} size='small'>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell align="right">Hole 1</TableCell>
-                <TableCell align="right">Hole 2</TableCell>
-                <TableCell align="right">Hole 3</TableCell>
-                <TableCell align="right">Hole 4</TableCell>
-                <TableCell align="right">Hole 5</TableCell>
-                <TableCell align="right">Hole 6</TableCell>
-                <TableCell align="right">Hole 7</TableCell>
-                <TableCell align="right">Hole 8</TableCell>
-                <TableCell align="right">Hole 9</TableCell>
-                <TableCell align="right">Score</TableCell>
+                <TableCell><b>Name</b></TableCell>
+                <TableCell align="right"><b>Hole 1</b></TableCell>
+                <TableCell align="right"><b>Hole 2</b></TableCell>
+                <TableCell align="right"><b>Hole 3</b></TableCell>
+                <TableCell align="right"><b>Hole 4</b></TableCell>
+                <TableCell align="right"><b>Hole 5</b></TableCell>
+                <TableCell align="right"><b>Hole 6</b></TableCell>
+                <TableCell align="right"><b>Hole 7</b></TableCell>
+                <TableCell align="right"><b>Hole 8</b></TableCell>
+                <TableCell align="right"><b>Hole 9</b></TableCell>
+                <TableCell align="right"><b>Score</b></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -63,7 +63,7 @@ export default function Scores() {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.name}
+                    <b>{row.name}</b>
                   </TableCell>
                   <TableCell align="right">{row.holeOne}</TableCell>
                   <TableCell align="right">{row.holeTwo}</TableCell>
