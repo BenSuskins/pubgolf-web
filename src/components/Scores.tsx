@@ -8,46 +8,16 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
-function createData(
-  id: string,
-  name: string,
-  holeOne: number,
-  holeTwo: number,
-  holeThree: number,
-  holeFour: number,
-  holeFive: number,
-  holeSix: number,
-  holeSeven: number,
-  holeEight: number,
-  holeNine: number,
-  total: number
-) {
-  return { id, name, holeOne, holeTwo, holeThree, holeFour, holeFive, holeSix, holeSeven, holeEight, holeNine, total };
-}
-
-const rows = [
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa6', 'Ben', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-  createData('3fa85f64-5717-4562-b3fc-2c963f66afa7', 'Megane', 1, 2, 3, 4, 5, 6, 7, 8, 9, 100),
-];
-
 export default function Scores() {
+  const [rows, setRows] = React.useState<any[]>([])
+
+  React.useEffect(() => {
+    fetch('http://localhost:8080/api/v1/scores')
+      .then(response => response.json())
+      .then(json => setRows(json))
+      .catch(error => console.error(error));
+  }, []);
+
   return (
     <Box sx={{ width: '100%' }}>
       <Paper sx={{ width: '100%', mb: 2 }}>
