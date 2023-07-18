@@ -5,7 +5,6 @@ import Scores from './components/Scores';
 import Nav from './components/Nav';
 import SubmitButton from './components/SubmitButton';
 
-
 export default function App() {
   return (
     <Container maxWidth="xl">

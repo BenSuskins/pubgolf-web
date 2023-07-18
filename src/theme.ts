@@ -14,6 +14,23 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  components: {
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          fontSize: '12px',
+        },
+      }
+    },
+    MuiTable: {
+      styleOverrides: {
+        root: {
+          maxWidth: '100%',
+          overflowX: 'hidden',
+        },
+      }
+    }
+  }
 });
 
 export default theme;

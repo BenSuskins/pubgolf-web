@@ -34,13 +34,13 @@ export default function Scores() {
   }, []);
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box>
       {
         errors ? <Box><Alert severity="error">{errors}</Alert><br></br> </Box> : ''
       }
-      <Paper sx={{ width: '100%', mb: 2 }}>
+      <Paper>
         <TableContainer >
-          <Table sx={{ minWidth: 10 }} size='small'>
+          <Table size='medium'>
             <TableHead>
               <TableRow>
                 <TableCell><b>Name</b></TableCell>
