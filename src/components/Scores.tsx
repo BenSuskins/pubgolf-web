@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
+import { colors } from '@mui/material';
 
 export default function Scores() {
   const [rows, setRows] = React.useState<any[]>([])
