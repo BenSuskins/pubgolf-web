@@ -94,7 +94,7 @@ export default function Rules() {
         2. Skipping a hole <b > +10 Points</b>. <br></br>
         3. Doing 2 drinks <b >-1 Point</b>. <br></br>
         4. A <b >Sip</b> lasts <b >1</b> Minute. <br></br>
-        5. If it stops touching your lip it stops being <b >one</b> sip. <br></br>
+        5. If it stops touching your lip it stops being <b >one</b> sip.
       </Typography>
     </Container>
   );
