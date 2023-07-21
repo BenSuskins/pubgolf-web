@@ -43,7 +43,7 @@ export default function Scores() {
           <Table size='medium'>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} ><b>Name</b></TableCell>
+                <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} ><b>Name</b></TableCell>
                 <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 1</b></TableCell>
                 <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 2</b></TableCell>
                 <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 3</b></TableCell>
@@ -61,7 +61,7 @@ export default function Scores() {
                 <TableRow
                   key={row.name}
                 >
-                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} component="th" scope="row">
+                  <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} component="th" scope="row">
                     <b>{row.name}</b>
                   </TableCell>
                   <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeOne}</TableCell>

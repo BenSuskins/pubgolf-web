@@ -18,6 +18,7 @@ export default function Home() {
 
   return (
     <Container  >
+      <br></br>
       <Typography variant="h4" gutterBottom align="center">
         Pubgolf
       </Typography>
