@@ -5,7 +5,7 @@ import { red } from '@mui/material/colors';
 const theme = createTheme({
   palette: {
     background: {
-      default: "#121212"
+      default: "#FAF9F6"
     },
     primary: {
       main: '#03a9f4',
@@ -16,7 +16,7 @@ const theme = createTheme({
     error: {
       main: red.A400,
     }, text: {
-      primary: "#f5f5f5"
+      // primary: "#f5f5f5"
     }
   },
   components: {
@@ -32,36 +32,29 @@ const theme = createTheme({
         root: {
           maxWidth: '100%',
           overflowX: 'hidden',
-          backgroundColor: "#222222"
-        },
-      }
-    },
-    MuiModal: {
-      styleOverrides: {
-        root: {
-          maxWidth: '100%',
+          // backgroundColor: "#222222"
         },
       }
     },
     MuiTableHead: {
       styleOverrides: {
         root: {
-          backgroundColor: "#03a9f4"
+          // backgroundColor: "#03a9f4"
         },
       }
     },
     MuiBottomNavigation: {
       styleOverrides: {
         root: {
-          backgroundColor: "#222222",
-          color: '#f5f5f5'
+          // backgroundColor: "#222222",
+          // color: '#f5f5f5'
         },
       },
     },
     MuiBottomNavigationAction: {
       styleOverrides: {
         root: {
-          color: '#f5f5f5 '
+          // color: '#f5f5f5 '
         },
       }
     }

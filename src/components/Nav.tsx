@@ -11,11 +11,13 @@ export default function Nav() {
   React.useEffect(() => {
     switch (value) {
       case 0: {
-        // todo redirect; 
+        if (window.location.pathname !== '/')
+          window.location.href = '/';
         break;
       }
       case 1: {
-        //todo redirect; 
+        if (window.location.pathname !== '/info')
+          window.location.href = '/info';
         break;
       }
     }

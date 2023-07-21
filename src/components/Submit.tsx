@@ -30,7 +30,10 @@ const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
     const id = localStorage.getItem("id");
     if (!score || !hole) {
       setErrors("Something is missing...");
-    } else {
+    } if (parseInt(score) > 10 || parseInt(score) < -10) {
+      setErrors("Score must be between 10 and -10");
+    }
+    else {
       const requestOptions = {
         method: 'PUT'
       };
@@ -38,14 +41,14 @@ const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
         .then((resp) => {
           if (resp.ok) {
             handleClose();
+            return { 'message': '' }
           } else {
             return resp.json();
           }
         })
         .then(json => setErrors(json.message))
         .catch(error => {
-          console.error(error);
-          setErrors(error);
+          console.log(error);
         });
     }
   }
