@@ -34,47 +34,46 @@ export default function Scores() {
   }, []);
 
   return (
-    <Box>
+    <Box width={'100%'}>
       {
         errors ? <Box><Alert severity="error">{errors}</Alert><br></br> </Box> : ''
       }
       <Paper>
-        <TableContainer >
+        <TableContainer>
           <Table size='medium'>
             <TableHead>
               <TableRow>
-                <TableCell><b>Name</b></TableCell>
-                <TableCell align="right"><b>Hole 1</b></TableCell>
-                <TableCell align="right"><b>Hole 2</b></TableCell>
-                <TableCell align="right"><b>Hole 3</b></TableCell>
-                <TableCell align="right"><b>Hole 4</b></TableCell>
-                <TableCell align="right"><b>Hole 5</b></TableCell>
-                <TableCell align="right"><b>Hole 6</b></TableCell>
-                <TableCell align="right"><b>Hole 7</b></TableCell>
-                <TableCell align="right"><b>Hole 8</b></TableCell>
-                <TableCell align="right"><b>Hole 9</b></TableCell>
-                <TableCell align="right"><b>Score</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} ><b>Name</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 1</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 2</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 3</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 4</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 5</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 6</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 7</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 8</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Hole 9</b></TableCell>
+                <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="center"><b>Score</b></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {rows.map((row) => (
                 <TableRow
                   key={row.name}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} component="th" scope="row">
                     <b>{row.name}</b>
                   </TableCell>
-                  <TableCell align="right">{row.holeOne}</TableCell>
-                  <TableCell align="right">{row.holeTwo}</TableCell>
-                  <TableCell align="right">{row.holeThree}</TableCell>
-                  <TableCell align="right">{row.holeFour}</TableCell>
-                  <TableCell align="right">{row.holeFive}</TableCell>
-                  <TableCell align="right">{row.holeSix}</TableCell>
-                  <TableCell align="right">{row.holeSeven}</TableCell>
-                  <TableCell align="right">{row.holeEight}</TableCell>
-                  <TableCell align="right">{row.holeNine}</TableCell>
-                  <TableCell align="right">{row.total}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeOne}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeTwo}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeThree}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeFour}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeFive}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeSix}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeSeven}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeEight}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.holeNine}</TableCell>
+                  <TableCell sx={{ minWidth: 0.09, maxWidth: 0.09 }} align="right">{row.total}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

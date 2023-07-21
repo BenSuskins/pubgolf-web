@@ -17,7 +17,7 @@ export default function Home() {
   }, []);
 
   return (
-    <Container maxWidth="xl">
+    <Container  >
       <Typography variant="h4" gutterBottom align="center">
         Pubgolf
       </Typography>

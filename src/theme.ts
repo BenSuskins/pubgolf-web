@@ -24,6 +24,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontSize: '12px',
+          border: '1px solid rgba(224, 224, 224, 1)'
         },
       }
     },
@@ -39,7 +40,7 @@ const theme = createTheme({
     MuiTableHead: {
       styleOverrides: {
         root: {
-          // backgroundColor: "#03a9f4"
+          backgroundColor: "#03a9f4"
         },
       }
     },

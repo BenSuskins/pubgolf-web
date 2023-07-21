@@ -16,35 +16,34 @@ export default function Rules() {
         Traditional Route
       </Typography>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="right"><b>Tequila</b></TableCell>
-              <TableCell align="right"><b>Beer</b></TableCell>
-              <TableCell align="right"><b>Wine</b></TableCell>
-              <TableCell align="right"><b>Cider</b></TableCell>
-              <TableCell align="right"><b>Cocktail</b></TableCell>
-              <TableCell align="right"><b>Spirit & Mixer</b></TableCell>
-              <TableCell align="right"><b>Guiness</b></TableCell>
-              <TableCell align="right"><b>Jagerbomb</b></TableCell>
-              <TableCell align="right"><b>VK</b></TableCell>
-              <TableCell align="right"><b>Total</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Tequila</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Beer</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Wine</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Cider</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Cocktail</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Spirit & Mixer</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Guiness</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Jagerbomb</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>VK</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Total</b></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="right">1</TableCell>
-              <TableCell align="right">3</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">4</TableCell>
-              <TableCell align="right">1</TableCell>
-              <TableCell align="right">1</TableCell>
-              <TableCell align="right">18</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">1</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">3</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">2</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">2</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">2</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">2</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">4</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">1</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">1</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">18</TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -54,35 +53,34 @@ export default function Rules() {
         Alternate Route
       </Typography>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="right"><b>Sambuca</b></TableCell>
-              <TableCell align="right"><b>Double Vodka & Mixer</b></TableCell>
-              <TableCell align="right"><b>Gin & Mixer</b></TableCell>
-              <TableCell align="right"><b>Rum & Mixer</b></TableCell>
-              <TableCell align="right"><b>Cocktail</b></TableCell>
-              <TableCell align="right"><b>Whiskey & Mixer</b></TableCell>
-              <TableCell align="right"><b>Double Spirit & Mixer</b></TableCell>
-              <TableCell align="right"><b>Jagerbomb</b></TableCell>
-              <TableCell align="right"><b>VK</b></TableCell>
-              <TableCell align="right"><b>Total</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Sambuca</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Double Vodka & Mixer</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Gin & Mixer</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Rum & Mixer</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Cocktail</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Whiskey & Mixer</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Double Spirit & Mixer</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Jagerbomb</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>VK</b></TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center"><b>Total</b></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="right">1</TableCell>
-              <TableCell align="right">3</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">2</TableCell>
-              <TableCell align="right">4</TableCell>
-              <TableCell align="right">1</TableCell>
-              <TableCell align="right">1</TableCell>
-              <TableCell align="right">18</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">1</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">3</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">2</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">2</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">2</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">2</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">4</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">1</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">1</TableCell>
+              <TableCell sx={{ minWidth: 0.1, maxWidth: 0.1 }} align="center">18</TableCell>
             </TableRow>
           </TableBody>
         </Table>
@@ -96,7 +94,7 @@ export default function Rules() {
         2. Skipping a hole <b > +10 Points</b>. <br></br>
         3. Doing 2 drinks <b >-1 Point</b>. <br></br>
         4. A <b >Sip</b> lasts <b >1</b> Minute. <br></br>
-        5. If it stops touching your lip it stops being <b >one</b> sip.
+        5. If it stops touching your lip it stops being <b >one</b> sip. <br></br>
       </Typography>
     </Container>
   );
