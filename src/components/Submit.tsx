@@ -17,9 +17,6 @@ interface SubmitProps {
 const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
   const [hole, setHole] = React.useState('');
   const [score, setScore] = React.useState('');
-  const [id] = React.useState(() => {
-    return localStorage.getItem("id");
-  });
   const [errors, setErrors] = React.useState('');
 
   const handleClose = () => {
@@ -30,6 +27,7 @@ const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
   }
 
   const submitScore = () => {
+    const id = localStorage.getItem("id");
     if (!score || !hole) {
       setErrors("Something is missing...");
     } else {
@@ -47,7 +45,7 @@ const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
         .then(json => setErrors(json.message))
         .catch(error => {
           console.error(error);
-          setErrors(errors);
+          setErrors(error);
         });
     }
   }
