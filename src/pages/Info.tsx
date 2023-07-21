@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Nav from './components/Nav';
+import Nav from '../components/Nav';
 
 export default function Info() {
   return (

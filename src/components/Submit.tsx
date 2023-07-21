@@ -110,7 +110,6 @@ const Submit: React.FC<SubmitProps> = ({ openState: [open, setOpen] }) => {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                   setScore(event.target.value);
                 }}
-                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: -10, max: 10 }}
               />
               <br></br>
               <Button variant="contained" onClick={submitScore}>Submit</Button>
