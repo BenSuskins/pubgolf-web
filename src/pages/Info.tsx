@@ -12,6 +12,7 @@ export default function Info() {
     <Container>
       <ScrollToTop />
       <Box paddingBottom='56px'>
+        <br></br>
         <Typography variant="h4" gutterBottom align="center">
           Info
         </Typography>

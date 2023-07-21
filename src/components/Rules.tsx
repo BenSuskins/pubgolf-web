@@ -87,6 +87,21 @@ export default function Rules() {
       </TableContainer>
       <br></br>
       <Typography variant="h5" gutterBottom align="center">
+        Pubs
+      </Typography>
+      <Typography variant="body1" gutterBottom align="center">
+        Hole 1: Waxy O'Connor's London<br></br>
+        Hole 2: The Bear And Staff<br></br>
+        Hole 3: Brewmaster<br></br>
+        Hole 4: The Porcupine<br></br>
+        Hole 5: Bar Soho<br></br>
+        Hole 6: Thirst Bar<br></br>
+        Hole 7: The White Hart<br></br>
+        Hole 8: Bloomsbury Tavern<br></br>
+        Hole 9: Museum Tavern<br></br>
+      </Typography>
+      <br></br>
+      <Typography variant="h5" gutterBottom align="center">
         Rules
       </Typography>
       <Typography variant="body1" gutterBottom align="center">
