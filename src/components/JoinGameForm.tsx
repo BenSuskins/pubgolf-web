@@ -1,4 +1,3 @@
-// components/JoinGameForm.tsx
 import { Button, TextField, Box, Collapse, Typography, IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -9,6 +8,7 @@ const JoinGameForm = ({ gameIdentifier }) => {
   const [identifier, setIdentifier] = useState('');
   const [name, setName] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const JoinGameForm = ({ gameIdentifier }) => {
       router.push(`/game`);
     } catch (error) {
       console.error('Failed to join game:', error);
+      setErrorMessage('Failed to join game. Please check the identifier and try again.');
     }
   };
 
@@ -41,7 +42,7 @@ const JoinGameForm = ({ gameIdentifier }) => {
       >
         <GroupAddIcon fontSize="large" />
         <Typography variant="button" sx={{ ml: 1 }}>
-          {showForm ? 'Back' : 'Join a Game'}
+          {showForm ? 'Back' : 'Join Game'}
         </Typography>
       </IconButton>
       <Collapse in={showForm}>
@@ -65,6 +66,8 @@ const JoinGameForm = ({ gameIdentifier }) => {
             value={identifier}
             onChange={(e) => setIdentifier(e.target.value)}
             sx={{ borderRadius: 1, width: '300px' }}
+            error={!!errorMessage}
+            helperText={errorMessage}
           />
           <Button
             type="submit"
