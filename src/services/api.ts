@@ -27,8 +27,9 @@ export const createGame = async () => {
 };
 
 export const joinGame = async (identifier: string, name: string) => {
-  clearLocalStorage()
-  const response = await api.post(`/games/${identifier}/join`, { name });
+  const response = await api.post(`/games/${identifier}/join`, {
+    name: name
+  });
   localStorage.setItem('gameIdentifier', identifier);
   localStorage.setItem('playerName', name);
   return response.data;

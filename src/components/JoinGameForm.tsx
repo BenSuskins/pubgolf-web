@@ -14,7 +14,7 @@ const JoinGameForm = () => {
     event.preventDefault();
     try {
       await joinGame(identifier, name);
-      router.push(`/game?identifier=${identifier}&name=${name}`);
+      router.push(`/game`);
     } catch (error) {
       console.error('Failed to join game:', error);
     }

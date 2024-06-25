@@ -14,7 +14,7 @@ const CreateGameForm = () => {
     try {
       const game = await createGame();
       await joinGame(game.identifier, name);
-      router.push(`/game?identifier=${game.identifier}&name=${name}`);
+      router.push(`/game`);
     } catch (error) {
       console.error('Failed to create and join game:', error);
     }
