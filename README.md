@@ -1,6 +1,6 @@
 # Pub Golf UI
 
-This is a Frontend for the [Pubgolf](https://github.com/BenSuskins/pubgolf)] application.
+This is a Frontend for the [Pubgolf](https://github.com/BenSuskins/pubgolf) application.
 
 It uses Next.js and Typescript.
 
