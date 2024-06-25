@@ -71,6 +71,13 @@ const SubmitScorePage = () => {
             >
                 Submit
             </Button>
+            <Button
+                variant="outlined"
+                onClick={handleBack}
+                sx={{ mt: 1, mb: 2 }}  // Additional margin adjustments
+            >
+                Back
+            </Button>
         </Box>
     );
 };
