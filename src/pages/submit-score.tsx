@@ -93,14 +93,14 @@ const SubmitScorePage = () => {
             <Button
                 type="submit"
                 variant="contained"
-                sx={{ mt: 1, mb: 2, bgcolor: '#4caf50', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
+                sx={{ mt: 1, mb: 2, bgcolor: '#389e5c', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
             >
                 Submit
             </Button>
             <Button
                 variant="outlined"
                 onClick={handleBack}
-                sx={{ mt: 1, mb: 2, borderColor: '#4caf50', '&:hover': { borderColor: '#45a049' }, width: '200px' }}
+                sx={{ mt: 1, mb: 2, borderColor: '#389e5c', '&:hover': { borderColor: '#45a049' }, width: '200px' }}
             >
                 Back
             </Button>

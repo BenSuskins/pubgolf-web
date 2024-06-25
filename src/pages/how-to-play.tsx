@@ -93,7 +93,7 @@ const HowToPlayPage = () => {
             <Button
                 variant="outlined"
                 onClick={handleBack}
-                sx={{ mt: 3, mb: 2, color: '#fff', borderColor: '#4caf50', '&:hover': { borderColor: '#45a049' }, width: '200px' }}
+                sx={{ mt: 3, mb: 2, color: '#fff', borderColor: '#389e5c', '&:hover': { borderColor: '#45a049' }, width: '200px' }}
             >
                 Back
             </Button>

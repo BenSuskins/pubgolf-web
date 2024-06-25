@@ -31,7 +31,7 @@ const getScoreColor = (score: number, par: number): string => {
     if (score === par) {
         return '#fff';
     } else if (score < par) {
-        return '#4caf50'; 
+        return '#389e5c'; 
     } else {
         return '#f44336'; 
     }
@@ -55,7 +55,7 @@ const ScoreboardTable: React.FC<ScoreboardTableProps> = ({ players }) => {
                         <StyledTableRow key={index}>
                             <StickyTableCell component="th" scope="row">
                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                    <Avatar sx={{ bgcolor: '#4caf50', mr: 2 }}>{player.name.charAt(0).toUpperCase()}</Avatar>
+                                    <Avatar sx={{ bgcolor: '#389e5c', mr: 2 }}>{player.name.charAt(0).toUpperCase()}</Avatar>
                                     {player.name}
                                 </Box>
                             </StickyTableCell>

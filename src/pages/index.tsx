@@ -26,10 +26,10 @@ const Home: NextPage = () => {
       </Typography>
       <Box sx={{ my: 4 }}>
         <Image
-          src="/pub-golf-theme.webp"
+          src="/pub-golf-theme2.webp"
           alt="Pub Golf"
           width={isMobile ? 300 : 600}
-          height={isMobile ? 200 : 400}
+          height={isMobile ? 300 : 600}
         />
       </Box>
       <Paper elevation={3} sx={{ p: 2, mb: 3 }}>

@@ -70,14 +70,14 @@ const GamePage = () => {
             <Paper sx={{ mt: 4, p: 3, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 3 }}>
                 <Button
                     variant="contained"
-                    sx={{ mb: 2, bgcolor: '#4caf50', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
+                    sx={{ mb: 2, bgcolor: '#389e5c', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
                     onClick={handleScoreSubmit}
                 >
                     Submit Score
                 </Button>
                 <Button
                     variant="contained"
-                    sx={{ bgcolor: '#4caf50', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
+                    sx={{ bgcolor: '#389e5c', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
                     onClick={handleHowToPlay}
                 >
                     How to Play

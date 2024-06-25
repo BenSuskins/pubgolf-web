@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    primary: { main: '#4caf50' }, // Green color
+    primary: { main: '#389e5c' }, // Green color
     secondary: { main: '#ffd700' }, // Gold color
     background: {
       default: '#34352b', // Background color matching the logo
