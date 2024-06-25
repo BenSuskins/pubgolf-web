@@ -4,32 +4,7 @@ import { useRouter } from 'next/router';
 import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar } from '@mui/material';
 import { getPlayers } from '../services/api';
 import { getGameIdentifier } from '@/utils/utils';
-import { list } from 'postcss';
 import { drinks } from '@/utils/constants';
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    backgroundColor: theme.palette.primary.dark,
-    color: theme.palette.common.white,
-    fontWeight: 'bold',
-    zIndex: 2, // Higher z-index for header cells
-}));
-
-const StickyTableCell = styled(TableCell)(({ theme }) => ({
-    position: 'sticky',
-    left: 0,
-    backgroundColor: theme.palette.background.paper,
-    zIndex: 1, // Lower z-index for sticky player name cells
-    fontWeight: 'bold',
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
-    },
-    '&:hover': {
-        backgroundColor: theme.palette.action.selected,
-    },
-}));
 
 const GamePage = () => {
     const router = useRouter();
@@ -42,20 +17,9 @@ const GamePage = () => {
     };
 
     const fetchGameIdentifier = async () => {
-        const gameIdentifier = getGameIdentifier();
-        setGameIdentifier(gameIdentifier);
+        const identifier = getGameIdentifier();
+        setGameIdentifier(identifier);
     };
-
-    useEffect(() => {
-        fetchPlayers();
-        const interval = setInterval(fetchPlayers, 30000);
-
-        return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        fetchGameIdentifier();
-    }, []);
 
     const handleScoreSubmit = () => {
         router.push(`/submit-score`);
@@ -74,6 +38,41 @@ const GamePage = () => {
             return '#f44336'; // Red for above par
         }
     };
+
+    const StyledTableCell = styled(TableCell)(({ theme }) => ({
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.common.white,
+        fontWeight: 'bold',
+        zIndex: 2, // Higher z-index for header cells
+    }));
+    
+    const StickyTableCell = styled(TableCell)(({ theme }) => ({
+        position: 'sticky',
+        left: 0,
+        backgroundColor: theme.palette.background.paper,
+        zIndex: 1, // Lower z-index for sticky player name cells
+        fontWeight: 'bold',
+    }));
+    
+    const StyledTableRow = styled(TableRow)(({ theme }) => ({
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+        '&:hover': {
+            backgroundColor: theme.palette.action.selected,
+        },
+    }));
+
+    useEffect(() => {
+        fetchPlayers();
+        const interval = setInterval(fetchPlayers, 30000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        fetchGameIdentifier();
+    }, []);
 
     return (
         <Box sx={{
@@ -100,15 +99,15 @@ const GamePage = () => {
                     <TableHead>
                         <TableRow>
                             <StyledTableCell>Player Name</StyledTableCell>
-                            {Array.from({ length: 9 }, (_, i) => (
-                                <StyledTableCell key={i} align="right">Hole {i + 1}</StyledTableCell>
+                            {drinks.map((_, index) => (
+                                <StyledTableCell key={index} align="right">Hole {index + 1}</StyledTableCell>
                             ))}
                             <StyledTableCell align="right">Total</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {players.map((player: Player, index) => (
-                            <StyledTableRow key={player.name}>
+                            <StyledTableRow key={index}>
                                 <StickyTableCell component="th" scope="row">
                                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                         <Avatar sx={{ bgcolor: '#4caf50', mr: 2 }}>{player.name.charAt(0).toUpperCase()}</Avatar>
