@@ -11,6 +11,13 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     fontWeight: 'bold',
 }));
 
+const StickyTableCell = styled(TableCell)(({ theme }) => ({
+    position: 'sticky',
+    left: 0,
+    backgroundColor: theme.palette.background.paper, // Ensure the cell background isn't transparent
+    zIndex: 1, // Ensure it stays above the row's cells but below the header
+}));
+
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
@@ -52,7 +59,7 @@ const GamePage = () => {
             mt: 1,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',  // This line centers the children horizontally
+            alignItems: 'center',  // This centers the children horizontally
             p: 3,
             mx: 'auto',
             my: 2
@@ -60,8 +67,8 @@ const GamePage = () => {
             <Typography variant="h4" gutterBottom>
                 Scoreboard - {gameIdentifier}
             </Typography>
-            <TableContainer component={Paper}>
-                <Table aria-label="scoreboard table">
+            <TableContainer component={Paper} sx={{ overflowX: 'auto' }}>
+                <Table stickyHeader aria-label="scoreboard table">
                     <TableHead>
                         <TableRow>
                             <StyledTableCell>Player Name</StyledTableCell>
@@ -74,9 +81,9 @@ const GamePage = () => {
                     <TableBody>
                         {players.map((player, index) => (
                             <StyledTableRow key={player.name}>
-                                <StyledTableCell component="th" scope="row">
+                                <StickyTableCell component="th" scope="row">
                                     {player.name}
-                                </StyledTableCell>
+                                </StickyTableCell>
                                 {player.scores.map((score, i) => (
                                     <TableCell key={i} align="right">{score}</TableCell>
                                 ))}
