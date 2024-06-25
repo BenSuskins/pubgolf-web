@@ -4,7 +4,11 @@ import { useRouter } from 'next/router';
 import { joinGame } from '../services/api';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
-const JoinGameForm = ({ gameIdentifier }) => {
+type JoinGameFormProps = {
+  gameIdentifier: string;
+};
+
+const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
   const [identifier, setIdentifier] = useState('');
   const [name, setName] = useState('');
   const [showForm, setShowForm] = useState(false);
