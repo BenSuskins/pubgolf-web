@@ -107,22 +107,24 @@ const HowToPlayPage = () => {
                     </Table>
                 </TableContainer>
             </Paper>
-            <Paper sx={{ p: 3, width: '100%', height: '400px', boxShadow: 3 }}>
+            <Paper sx={{ p: 3, width: '100%', boxShadow: 3, mb: 3 }}>
                 <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
-                    Pubs
+                    Route
                 </Typography>
-                <MapContainer center={[51.53877, -0.04521]} zoom={14} style={{ width: '100%', height: '100%' }}>
-                    <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    />
-                    <Polyline positions={polylinePositions} color="blue" />
-                    {drinks.map((drink, index) => (
-                        <Marker key={index} position={[drink.lat, drink.lng]} color="blue" >
-                            <Popup>{drink.pub}</Popup>
-                        </Marker>
-                    ))}
-                </MapContainer>
+                <Box sx={{ width: '100%', height: '400px' }}>
+                    <MapContainer center={[51.53877, -0.04521]} zoom={14} style={{ width: '100%', height: '100%' }}>
+                        <TileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                        />
+                        <Polyline positions={polylinePositions} color="blue" />
+                        {drinks.map((drink, index) => (
+                            <Marker key={index} position={[drink.lat, drink.lng]} color="blue">
+                                <Popup>{drink.pub}</Popup>
+                            </Marker>
+                        ))}
+                    </MapContainer>
+                </Box>
             </Paper>
             <Button
                 variant="outlined"
