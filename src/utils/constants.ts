@@ -18,3 +18,5 @@ export const drinks: DrinkInfo[] = [
     { pub: 'Off Broadway', drinkA: 'Jagerbomb', drinkB: 'Jagerbomb', par: 1, lat: 51.5373719548513, lng: -0.06138017268091661 },
     { pub: 'Sebright Arms', drinkA: 'VK', drinkB: 'Smirnoff', par: 1, lat: 51.532039688673585, lng: -0.06306789819191375 },
 ];
+
+export const baseURL = 'https://api.suskins.co.uk/api';

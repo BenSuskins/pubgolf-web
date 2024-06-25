@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { clearLocalStorage, getGameIdentifier, getPlayerName } from '@/utils/utils';
+import { baseURL } from '@/utils/constants';
 
-const BASE_URL = 'https://api.suskins.co.uk/api';
 const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: baseURL,
 });
 
 api.interceptors.request.use(request => {
