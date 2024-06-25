@@ -49,7 +49,7 @@ const CreateGameForm = () => {
   };
 
   return (
-    <Box sx={{ mt: 3 }}>
+    <Box sx={{ mt: 0 }}>
       <Dialog open={showDialog} onClose={handleCloseDialog}>
         <DialogTitle>
           Game Created
