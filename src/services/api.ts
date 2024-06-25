@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { clearLocalStorage, getGameIdentifier, getPlayerName } from '@/utils/utils';
+import { clearLocalStorage, getGameIdentifier, getPlayerName, setGameIdentifier, setPlayerName } from '@/utils/utils';
 import { baseURL } from '@/utils/constants';
 
 const api = axios.create({
@@ -22,7 +22,7 @@ api.interceptors.response.use(response => {
 export const createGame = async () => {
   clearLocalStorage()
   const response = await api.post('/games');
-  localStorage.setItem('gameIdentifier', response.data.identifier);
+  setGameIdentifier(response.data.identifier);
   return response.data;
 };
 
@@ -30,8 +30,8 @@ export const joinGame = async (identifier: string, name: string) => {
   const response = await api.post(`/games/${identifier}/join`, {
     name: name
   });
-  localStorage.setItem('gameIdentifier', identifier);
-  localStorage.setItem('playerName', name);
+  setGameIdentifier(identifier);
+  setPlayerName(name);
   return response.data;
 };
 

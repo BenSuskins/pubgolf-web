@@ -1,11 +1,11 @@
 export const getGameIdentifier = (): string => {
-    const identifier = localStorage.getItem('gameIdentifier');
-    if (!identifier) {
-      console.warn('No game identifier found in local storage.');
-      throw new Error('Game identifier not found.');
-    }
-    return identifier;
-  };
+  const identifier = localStorage.getItem('gameIdentifier');
+  if (!identifier) {
+    console.warn('No game identifier found in local storage.');
+    throw new Error('Game identifier not found.');
+  }
+  return identifier;
+};
 
 export const getPlayerName = (): string => {
   const playerName = localStorage.getItem('playerName');
@@ -20,3 +20,11 @@ export const clearLocalStorage = () => {
   console.log('Clearing local storage')
   localStorage.clear();
 };
+
+export const setPlayerName = (playerName: string) => {
+  localStorage.setItem('playerName', playerName);
+}
+
+export const setGameIdentifier = (gameIdentifier: string) => {
+  localStorage.setItem('gameIdentifier', gameIdentifier);
+}
