@@ -17,7 +17,7 @@ export const getPlayerName = (): string => {
 };
 
 export const clearLocalStorage = () => {
-  console.log('Clearing local storage')
+  console.debug('Clearing local storage')
   localStorage.clear();
 };
 

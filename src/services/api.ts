@@ -7,12 +7,12 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(request => {
-  console.log('Starting Request', JSON.stringify(request, null, 2));
+  console.debug('Starting Request', JSON.stringify(request, null, 2));
   return request;
 });
 
 api.interceptors.response.use(response => {
-  console.log('Response:', JSON.stringify(response.data, null, 2));
+  console.debug('Response:', JSON.stringify(response.data, null, 2));
   return response;
 }, error => {
   console.error('Error:', JSON.stringify(error.response?.data || error.message, null, 2));
