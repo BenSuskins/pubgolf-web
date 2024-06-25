@@ -1,27 +1,48 @@
 // pages/submit-score.tsx
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { Box, Button, TextField, Typography, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
+import { Box, Button, TextField, Typography, MenuItem, FormControl, InputLabel, Select, Snackbar, Alert } from '@mui/material';
 import { submitScore } from '../services/api';
 
 const SubmitScorePage = () => {
     const router = useRouter();
     const [hole, setHole] = useState('');
     const [score, setScore] = useState('');
+    const [error, setError] = useState(''); // For managing input errors
+    const [snackbarOpen, setSnackbarOpen] = useState(false); // Manage Snackbar visibility
+
+    const validateScore = (score) => {
+        const numScore = parseInt(score);
+        if (numScore < -10 || numScore > 10) {
+            setError('Score must be between -10 and 10.');
+            return false;
+        }
+        setError('');
+        return true;
+    };
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
+        if (!validateScore(score)) {
+            return; // Prevent submission if the score is invalid
+        }
+
         try {
             await submitScore(parseInt(hole), parseInt(score));
-            router.push(`/game`);
+            setSnackbarOpen(true); // Show success message
+            setTimeout(() => { // Redirect after showing message
+                router.push(`/game`);
+            }, 2000);
         } catch (error) {
             console.error('Failed to submit score:', error);
+            setError('Failed to submit score.');
         }
     };
 
     const handleBack = () => {
         router.push(`/game`);
     };
+
     return (
         <Box
             component="form"
@@ -62,6 +83,8 @@ const SubmitScorePage = () => {
                 margin="normal"
                 value={score}
                 onChange={(e) => setScore(e.target.value)}
+                error={!!error}
+                helperText={error}
                 sx={{ mb: 2 }}  // Adds margin below the TextField
             />
             <Button
@@ -78,6 +101,11 @@ const SubmitScorePage = () => {
             >
                 Back
             </Button>
+            <Snackbar open={snackbarOpen} autoHideDuration={1000} onClose={() => setSnackbarOpen(false)}>
+                <Alert onClose={() => setSnackbarOpen(false)} severity="success" sx={{ width: '100%' }}>
+                    Score submitted successfully!
+                </Alert>
+            </Snackbar>
         </Box>
     );
 };
