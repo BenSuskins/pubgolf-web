@@ -40,7 +40,7 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
         type="submit"
         variant="contained"
         color="primary"
-        sx={{ mt: 3, mb: 2, width: '200px' }}
+        sx={{ width: '200px' }}
       >
         {showForm ? 'Back' : 'Join Game'}
       </Button>

@@ -101,7 +101,7 @@ const CreateGameForm = () => {
         onClick={toggleFormVisibility}
         variant="contained"
         color="primary"
-        sx={{ mt: 3, mb: 2, width: '200px' }}
+        sx={{ mb: 3, width: '200px' }}
       >
         {showForm ? 'Back' : 'Create Game'}
       </Button>
