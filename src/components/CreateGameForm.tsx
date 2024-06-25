@@ -34,7 +34,7 @@ const CreateGameForm = () => {
   };
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(gameIdentifier).then(() => {
+    navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}?identifier=${gameIdentifier}`).then(() => {
       setOpenSnackbar(true);  // Show feedback that the identifier was copied.
     }, (err) => {
       console.error('Could not copy text: ', err);
@@ -51,11 +51,11 @@ const CreateGameForm = () => {
         <DialogTitle>Game Created</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Your game has been created successfully! Here's the game identifier which you can share with others:
+            Your game has been created successfully! Share this link to invite others:
             <Typography sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1 }}>{gameIdentifier}</Typography>
           </DialogContentText>
           <Button onClick={handleCopyToClipboard} variant="contained" color="primary" sx={{ mt: 1 }}>
-            Copy to Clipboard
+            Copy link to Clipboard
           </Button>
         </DialogContent>
         <DialogActions>

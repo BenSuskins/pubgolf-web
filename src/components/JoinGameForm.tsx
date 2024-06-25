@@ -1,14 +1,20 @@
 // components/JoinGameForm.tsx
 import { Button, TextField, Box, Collapse } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { joinGame } from '../services/api';
 
-const JoinGameForm = () => {
+const JoinGameForm = ({ gameIdentifier }) => {
   const [identifier, setIdentifier] = useState('');
   const [name, setName] = useState('');
   const [showForm, setShowForm] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    if (gameIdentifier) {
+      setIdentifier(gameIdentifier);
+    }
+  }, [gameIdentifier]);
 
   const handleJoinGame = async (event: React.FormEvent) => {
     event.preventDefault();
