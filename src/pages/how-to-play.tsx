@@ -1,6 +1,17 @@
 import { useRouter } from 'next/router';
 import { Box, Button, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, ListItem, ListItemText } from '@mui/material';
 import { styled } from '@mui/system';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix leaflet's default icon issue with Next.js
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
@@ -26,15 +37,15 @@ const HowToPlayPage = () => {
     ];
 
     const drinks = [
-        { pub: 'The Lock Inn / Four Quarters', drink1: 'Tequila (1)', drink2: 'Sambuca (1)' },
-        { pub: 'Beer Merchants Tap', drink1: 'Beer (3)', drink2: 'Double Vodka & Single Vodka (3)' },
-        { pub: 'No 90', drink1: 'Wine (2)', drink2: 'Double Gin (2)' },
-        { pub: 'The Lord Napier Star', drink1: 'Cider (2)', drink2: 'Double Rum (2)' },
-        { pub: 'The Kenton Pub', drink1: 'Cocktail (2)', drink2: 'Cocktail (2)' },
-        { pub: 'Peoples Park Tavern', drink1: 'Spirit Mixer (2)', drink2: 'Spirit Mixer (2)' },
-        { pub: 'The Lauriston', drink1: 'Guiness (4)', drink2: '2 x Double Whiskey (2)' },
-        { pub: 'Off Broadway', drink1: 'Jagerbomb (1)', drink2: 'Jagerbomb (1)' },
-        { pub: 'Sebright Arms', drink1: 'VK (1)', drink2: 'Smirnoff (1)' },
+        { pub: 'The Lock Inn', drink1: 'Tequila (1)', drink2: 'Sambuca (1)', lat: 51.54704221722351, lng: -0.024302005296492523 },
+        { pub: 'Beer Merchants Tap', drink1: 'Beer (3)', drink2: 'Double Vodka & Single Vodka (3)', lat: 51.544537514752406, lng: -0.024089676469998805 },
+        { pub: 'No 90', drink1: 'Wine (2)', drink2: 'Double Gin (2)', lat: 51.5441483399746, lng: -0.022686143228642857 },
+        { pub: 'The Lord Napier Star', drink1: 'Cider (2)', drink2: 'Double Rum (2)', lat: 51.54317410748569, lng: -0.025277542906490397 },
+        { pub: 'The Kenton Pub', drink1: 'Cocktail (2)', drink2: 'Cocktail (2)', lat: 51.54412976012798, lng: -0.044405712731114565 },
+        { pub: 'Peoples Park Tavern', drink1: 'Spirit Mixer (2)', drink2: 'Spirit Mixer (2)', lat: 51.541594024295264, lng: -0.037807392511082755 },
+        { pub: 'The Lauriston', drink1: 'Guiness (4)', drink2: '2 x Double Whiskey (2)', lat: 51.53798547783272, lng: -0.04512754105558223 },
+        { pub: 'Off Broadway', drink1: 'Jagerbomb (1)', drink2: 'Jagerbomb (1)', lat: 51.5373719548513, lng: -0.06138017268091661 },
+        { pub: 'Sebright Arms', drink1: 'VK (1)', drink2: 'Smirnoff (1)', lat: 51.532039688673585, lng: -0.06306789819191375 },
     ];
 
     return (
@@ -69,7 +80,7 @@ const HowToPlayPage = () => {
                     ))}
                 </List>
             </Paper>
-            <Paper sx={{ p: 3, width: '100%', boxShadow: 3 }}>
+            <Paper sx={{ p: 3, width: '100%', boxShadow: 3, mb: 3 }}>
                 <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
                     Drinks and Par Scores
                 </Typography>
@@ -78,8 +89,8 @@ const HowToPlayPage = () => {
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Pub</StyledTableCell>
-                                <StyledTableCell>Drink 1</StyledTableCell>
-                                <StyledTableCell>Drink 2</StyledTableCell>
+                                <StyledTableCell>Route 1</StyledTableCell>
+                                <StyledTableCell>Route 2</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -93,6 +104,22 @@ const HowToPlayPage = () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
+            </Paper>
+            <Paper sx={{ p: 3, width: '100%', height: '400px', boxShadow: 3 }}>
+                <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
+                    Pub Locations
+                </Typography>
+                <MapContainer center={[51.53877, -0.04521]} zoom={14} style={{ width: '100%', height: '100%' }}>
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    />
+                    {drinks.map((drink, index) => (
+                        <Marker key={index} position={[drink.lat, drink.lng]}>
+                            <Popup>{drink.pub}</Popup>
+                        </Marker>
+                    ))}
+                </MapContainer>
             </Paper>
             <Button
                 variant="outlined"
