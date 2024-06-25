@@ -5,8 +5,8 @@ const theme = createTheme({
     primary: { main: '#389e5c' }, // Green color
     secondary: { main: '#ffd700' }, // Gold color
     background: {
-      default: '#34352b', // Background color matching the logo
-      paper: '#424242', // Slightly lighter for paper elements
+      default: '#2b363b', // Background color matching the logo
+      paper: '#3b454a', // Slightly lighter for paper elements
     },
     text: {
       primary: '#ffffff', // White text for good contrast
@@ -54,7 +54,7 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          background: 'linear-gradient(135deg, #2b363b 0%, #303b3e 50%, #2b363b 100%)',
+          background: 'linear-gradient(135deg, #2b363b 10%, #303b3e 75%, #2b363b 100%)',
           margin: 0,
           fontFamily: 'Roboto, Arial, sans-serif',
         },
