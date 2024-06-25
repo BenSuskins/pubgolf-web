@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { Box, Button, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, ListItem, ListItemText } from '@mui/material';
 import { styled } from '@mui/system';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
@@ -48,6 +48,8 @@ const HowToPlayPage = () => {
         { pub: 'Sebright Arms', drink1: 'VK (1)', drink2: 'Smirnoff (1)', lat: 51.532039688673585, lng: -0.06306789819191375 },
     ];
 
+    const polylinePositions = drinks.map(drink => [drink.lat, drink.lng]);
+
     return (
         <Box sx={{
             mt: 1,
@@ -89,8 +91,8 @@ const HowToPlayPage = () => {
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Pub</StyledTableCell>
-                                <StyledTableCell>Route 1</StyledTableCell>
-                                <StyledTableCell>Route 2</StyledTableCell>
+                                <StyledTableCell>Drink 1</StyledTableCell>
+                                <StyledTableCell>Drink 2</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -107,15 +109,16 @@ const HowToPlayPage = () => {
             </Paper>
             <Paper sx={{ p: 3, width: '100%', height: '400px', boxShadow: 3 }}>
                 <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
-                    Pub Locations
+                    Pubs
                 </Typography>
                 <MapContainer center={[51.53877, -0.04521]} zoom={14} style={{ width: '100%', height: '100%' }}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     />
+                    <Polyline positions={polylinePositions} color="blue" />
                     {drinks.map((drink, index) => (
-                        <Marker key={index} position={[drink.lat, drink.lng]}>
+                        <Marker key={index} position={[drink.lat, drink.lng]} color="blue" >
                             <Popup>{drink.pub}</Popup>
                         </Marker>
                     ))}
