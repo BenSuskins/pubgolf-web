@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { createGame, joinGame } from '../services/api';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CloseIcon from '@mui/icons-material/Close';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const CreateGameForm = () => {
   const [name, setName] = useState('');

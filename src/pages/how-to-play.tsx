@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { Box, Button, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, ListItem, ListItemText } from '@mui/material';
 import { styled } from '@mui/system';
 import dynamic from 'next/dynamic';
+import { drinks, rules } from '@/utils/constants'; // Importing the drinks array
 
 // Dynamically import MapComponent
 const DynamicMapComponent = dynamic(() => import('../components/Map'), { ssr: false });
@@ -20,29 +21,7 @@ const HowToPlayPage = () => {
         router.push(`/game`);
     };
 
-    const rules = [
-        "Each player must drink the designated drink at each stop.",
-        "The par score for each drink represents the expected number of sips to finish the drink.",
-        "If you finish your drink in fewer sips than par, your score for that hole is the number of sips you took.",
-        "If you take more sips than par, your score for that hole is the number of sips you took.",
-        "Each sip can last at most 1 Minute.",
-        "Doing additional drinks will lower your score as decided by the referee."
-    ];
-
-    const drinks = [
-        { pub: 'The Lock Inn', drink1: 'Tequila (1)', drink2: 'Sambuca (1)', lat: 51.54704221722351, lng: -0.024302005296492523 },
-        { pub: 'Beer Merchants Tap', drink1: 'Beer (3)', drink2: 'Double Vodka & Single Vodka (3)', lat: 51.544537514752406, lng: -0.024089676469998805 },
-        { pub: 'No 90', drink1: 'Wine (2)', drink2: 'Double Gin (2)', lat: 51.5441483399746, lng: -0.022686143228642857 },
-        { pub: 'The Lord Napier Star', drink1: 'Cider (2)', drink2: 'Double Rum (2)', lat: 51.54317410748569, lng: -0.025277542906490397 },
-        { pub: 'The Kenton Pub', drink1: 'Cocktail (2)', drink2: 'Cocktail (2)', lat: 51.54412976012798, lng: -0.044405712731114565 },
-        { pub: 'Peoples Park Tavern', drink1: 'Spirit Mixer (2)', drink2: 'Spirit Mixer (2)', lat: 51.541594024295264, lng: -0.037807392511082755 },
-        { pub: 'The Lauriston', drink1: 'Guiness (4)', drink2: '2 x Double Whiskey (2)', lat: 51.53798547783272, lng: -0.04512754105558223 },
-        { pub: 'Off Broadway', drink1: 'Jagerbomb (1)', drink2: 'Jagerbomb (1)', lat: 51.5373719548513, lng: -0.06138017268091661 },
-        { pub: 'Sebright Arms', drink1: 'VK (1)', drink2: 'Smirnoff (1)', lat: 51.532039688673585, lng: -0.06306789819191375 },
-    ];
-    
-    type LatLngTuple = [number, number];
-    const polylinePositions: LatLngTuple[]  = drinks.map(drink => [drink.lat, drink.lng]);
+    const polylinePositions: LatLngTuple[] = drinks.map(drink => [drink.lat, drink.lng]);
 
     return (
         <Box sx={{
@@ -85,16 +64,18 @@ const HowToPlayPage = () => {
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Pub</StyledTableCell>
-                                <StyledTableCell>Drink 1</StyledTableCell>
-                                <StyledTableCell>Drink 2</StyledTableCell>
+                                <StyledTableCell>Drink A</StyledTableCell>
+                                <StyledTableCell>Drink B</StyledTableCell>
+                                <StyledTableCell>Par</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {drinks.map((drink, index) => (
                                 <TableRow key={index}>
                                     <TableCell sx={{ color: '#fff' }}>{drink.pub}</TableCell>
-                                    <TableCell sx={{ color: '#fff' }}>{drink.drink1}</TableCell>
-                                    <TableCell sx={{ color: '#fff' }}>{drink.drink2}</TableCell>
+                                    <TableCell sx={{ color: '#fff' }}>{drink.drinkA}</TableCell>
+                                    <TableCell sx={{ color: '#fff' }}>{drink.drinkB}</TableCell>
+                                    <TableCell sx={{ color: '#fff' }}>{drink.par}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

@@ -1,12 +1,7 @@
-import { Button, TextField, Box, Collapse, Typography, IconButton } from '@mui/material';
+import { Button, TextField, Box, Collapse } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { joinGame } from '../services/api';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
-
-type JoinGameFormProps = {
-  gameIdentifier: string;
-};
 
 const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
   const [identifier, setIdentifier] = useState('');
@@ -18,6 +13,7 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
   useEffect(() => {
     if (gameIdentifier) {
       setIdentifier(gameIdentifier);
+      setShowForm(true)
     }
   }, [gameIdentifier]);
 

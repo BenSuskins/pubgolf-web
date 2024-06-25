@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Box, Button, TextField, Typography, MenuItem, FormControl, InputLabel, Select, Paper } from '@mui/material';
-import { submitScore } from '../services/api';
+import { submitScore } from '@/services/api';
 
 const SubmitScorePage = () => {
     const router = useRouter();

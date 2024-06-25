@@ -3,19 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import * as L from 'leaflet';
 
-interface Drink {
-    pub: string;
-    drink1: string;
-    drink2: string;
-    lat: number;
-    lng: number;
-}
-
-interface MapComponentProps {
-    drinks: Drink[];
-    polylinePositions: [number, number][];
-}
-
 // Fix leaflet's default icon issue with Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({

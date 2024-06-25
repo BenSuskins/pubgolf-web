@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { clearLocalStorage, getGameIdentifier, getPlayerName } from './utils';
+import { clearLocalStorage, getGameIdentifier, getPlayerName } from '@/utils/utils';
 
 const BASE_URL = 'https://api.suskins.co.uk/api';
 const api = axios.create({

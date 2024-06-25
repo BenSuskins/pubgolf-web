@@ -3,16 +3,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar } from '@mui/material';
 import { getPlayers } from '../services/api';
-import { getGameIdentifier } from '@/services/utils';
+import { getGameIdentifier } from '@/utils/utils';
 import { list } from 'postcss';
-
-interface Player {
-    name: string;
-    scores: number[];
-    totalScore: number
-
-    // add other properties of the player object here if needed
-}
+import { drinks } from '@/utils/constants';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
@@ -37,8 +30,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
         backgroundColor: theme.palette.action.selected,
     },
 }));
-
-const parValues = [1, 3, 2, 2, 2, 2, 4, 1, 1];
 
 const GamePage = () => {
     const router = useRouter();
@@ -125,7 +116,7 @@ const GamePage = () => {
                                     </Box>
                                 </StickyTableCell>
                                 {player.scores.map((score, i) => (
-                                    <TableCell key={i} align="right" sx={{ color: getScoreColor(score, parValues[i]) }}>
+                                    <TableCell key={i} align="right" sx={{ color: getScoreColor(score, drinks[i].par) }}>
                                         {score}
                                     </TableCell>
                                 ))}
