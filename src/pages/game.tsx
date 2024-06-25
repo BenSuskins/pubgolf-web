@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Typography, Button, Paper } from '@mui/material';
+import { Box, Typography, Button, Paper, Snackbar, IconButton, Alert } from '@mui/material';
 import { getPlayers } from '../services/api';
 import { getGameIdentifier } from '@/utils/utils';
 import ScoreboardTable from '../components/ScoreboardTable';
 import { routes } from '@/utils/constants';
+import ShareIcon from '@mui/icons-material/Share';
 
 interface Player {
     name: string;
@@ -16,6 +17,7 @@ const GamePage = () => {
     const router = useRouter();
     const [players, setPlayers] = useState<Player[]>([]);
     const [gameIdentifier, setGameIdentifier] = useState('');
+    const [openSnackbar, setOpenSnackbar] = useState(false);
 
     const fetchPlayers = async () => {
         const playersData = await getPlayers();
@@ -33,6 +35,18 @@ const GamePage = () => {
 
     const handleHowToPlay = () => {
         router.push(routes.RULES);
+    };
+
+    const handleCopyToClipboard = () => {
+        navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}?identifier=${gameIdentifier}`).then(() => {
+            setOpenSnackbar(true);
+        }, (err) => {
+            console.error('Could not copy text: ', err);
+        });
+    };
+
+    const handleSnackbarClose = () => {
+        setOpenSnackbar(false);
     };
 
     useEffect(() => {
@@ -63,9 +77,14 @@ const GamePage = () => {
             <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
                 Scoreboard
             </Typography>
-            <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>
-                <em>Game - {gameIdentifier}</em>
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>
+                    <em>Game - {gameIdentifier}</em>
+                </Typography>
+                <IconButton onClick={handleCopyToClipboard} color="primary" size="small">
+                    <ShareIcon />
+                </IconButton>
+            </Box>
             <ScoreboardTable players={players} />
             <Paper sx={{ mt: 4, p: 3, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 3 }}>
                 <Button
@@ -77,12 +96,23 @@ const GamePage = () => {
                 </Button>
                 <Button
                     variant="contained"
-                    sx={{ bgcolor: '#389e5c', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
+                    sx={{ mb: 2, bgcolor: '#389e5c', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
                     onClick={handleHowToPlay}
                 >
                     How to Play
                 </Button>
             </Paper>
+            <Snackbar open={openSnackbar}
+                autoHideDuration={6000}
+                onClose={handleSnackbarClose}>
+                <Alert
+                    onClose={handleSnackbarClose}
+                    severity="success"
+                    variant="filled"
+                    sx={{ width: '100%' }}
+                >
+                    Game invite copied to clipboard  </Alert>
+            </Snackbar>
         </Box>
     );
 };

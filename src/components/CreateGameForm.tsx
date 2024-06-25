@@ -1,4 +1,4 @@
-import { Button, Snackbar, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, IconButton } from '@mui/material';
+import { Button, Snackbar, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, IconButton, Alert } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { createGame, joinGame } from '@/services/api';
@@ -37,7 +37,7 @@ const CreateGameForm = () => {
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}?identifier=${gameIdentifier}`).then(() => {
-      setOpenSnackbar(true); 
+      setOpenSnackbar(true);
     }, (err) => {
       console.error('Could not copy text: ', err);
     });
@@ -84,12 +84,17 @@ const CreateGameForm = () => {
           </Button>
         </DialogActions>
       </Dialog>
-      <Snackbar
-        open={openSnackbar}
+      <Snackbar open={openSnackbar}
         autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-        message="Game identifier copied to clipboard"
-      />
+        onClose={handleSnackbarClose}>
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          Game invite copied to clipboard  </Alert>
+      </Snackbar>
       <Button
         type="submit"
         onClick={toggleFormVisibility}
