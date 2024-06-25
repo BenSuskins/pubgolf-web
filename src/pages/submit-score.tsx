@@ -22,11 +22,22 @@ const SubmitScorePage = () => {
     const handleBack = () => {
         router.push(`/game`);
     };
-
     return (
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Typography variant="h6">Submit Your Score</Typography>
-            <FormControl fullWidth sx={{ mt: 2, mb: 2 }}>
+        <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{
+                mt: 1,
+                p: 2,  // Adds padding to the form
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',  // This will center the form elements
+                maxWidth: 600,  // Limits the max width of the form
+                margin: '0 auto',  // Centers the form in the page
+            }}
+        >
+            <Typography variant="h6" sx={{ mb: 2 }}>Submit Your Score</Typography>
+            <FormControl fullWidth sx={{ mb: 2 }}>
                 <InputLabel id="hole-label">Hole</InputLabel>
                 <Select
                     labelId="hole-label"
@@ -48,16 +59,17 @@ const SubmitScorePage = () => {
                 name="score"
                 type="number"
                 autoComplete="score"
-                autoFocus
                 margin="normal"
                 value={score}
                 onChange={(e) => setScore(e.target.value)}
+                sx={{ mb: 2 }}  // Adds margin below the TextField
             />
-            <Button type="submit" variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button
+                type="submit"
+                variant="contained"
+                sx={{ mt: 1, mb: 2 }}  // Additional margin adjustments
+            >
                 Submit
-            </Button>
-            <Button onClick={handleBack} variant="outlined" sx={{ mt: 1 }}>
-                Back
             </Button>
         </Box>
     );
