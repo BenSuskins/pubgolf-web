@@ -1,4 +1,4 @@
-// components/CreateGameButton.tsx
+import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import { createGame } from '../services/api';
 
@@ -15,7 +15,9 @@ const CreateGameButton = () => {
   };
 
   return (
-    <button onClick={handleCreateGame}>Create Game</button>
+    <Button variant="contained" color="primary" onClick={handleCreateGame}>
+      Create Game
+    </Button>
   );
 };
 

@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { getGameIdentifier } from './utils';
+import { clearLocalStorage, getGameIdentifier, getPlayerName } from './utils';
 
 const BASE_URL = 'http://localhost:8080/api';
 const api = axios.create({
   baseURL: BASE_URL,
 });
 
-// Interceptors for logging
 api.interceptors.request.use(request => {
   console.log('Starting Request', JSON.stringify(request, null, 2));
   return request;
@@ -21,19 +20,23 @@ api.interceptors.response.use(response => {
 });
 
 export const createGame = async () => {
+  clearLocalStorage()
   const response = await api.post('/games');
   localStorage.setItem('gameIdentifier', response.data.identifier);
   return response.data;
 };
 
 export const joinGame = async (identifier: string, name: string) => {
+  clearLocalStorage()
   const response = await api.post(`/games/${identifier}/join`, { name });
   localStorage.setItem('gameIdentifier', identifier);
+  localStorage.setItem('playerName', name);
   return response.data;
 };
 
-export const submitScore = async (playerName: string, hole: number, score: number) => {
-  const identifier = getGameIdentifier();
+export const submitScore = async (hole: number, score: number) => {
+  const identifier = getGameIdentifier(); 
+  const playerName = getPlayerName(); 
   const response = await api.post(`/games/${identifier}/players/${playerName}/score`, {
     hole: hole,
     score: score
