@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Box, Button, TextField, Typography, MenuItem, FormControl, InputLabel, Select, Paper } from '@mui/material';
 import { submitScore } from '@/services/api';
+import { routes } from '@/utils/constants';
 
 const SubmitScorePage = () => {
     const router = useRouter();
@@ -27,7 +28,7 @@ const SubmitScorePage = () => {
 
         try {
             await submitScore(parseInt(hole), parseInt(score));
-            router.push(`/game`);
+            handleBack();
         } catch (error) {
             console.error('Failed to submit score:', error);
             setError('Failed to submit score.');
@@ -35,7 +36,7 @@ const SubmitScorePage = () => {
     };
 
     const handleBack = () => {
-        router.push(`/game`);
+        router.push(routes.GAME);
     };
 
     return (
@@ -53,7 +54,7 @@ const SubmitScorePage = () => {
                 maxWidth: '1000px',
                 backgroundColor: '#2e2e2e', // Dark background to match the theme
                 borderRadius: 2,
-                boxShadow: 5,   
+                boxShadow: 5,
             }}
         >
             <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: '#fff', mb: 2 }}>

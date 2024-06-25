@@ -22,8 +22,8 @@ export const drinks: DrinkInfo[] = [
 export const baseURL = 'https://api.suskins.co.uk/api';
 
 export const routes = {
-    "HOME": "/home",
-    "GAME": "/game",
-    "SUBMIT": "/submit-score",
-    "RULES": "/how-to-play",
-}
+    HOME: "/home",
+    GAME: "/game",
+    SUBMIT: "/submit-score",
+    RULES: "/how-to-play",
+};

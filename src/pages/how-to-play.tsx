@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { Box, Button, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, ListItem, ListItemText } from '@mui/material';
 import { styled } from '@mui/system';
 import dynamic from 'next/dynamic';
-import { drinks, rules } from '@/utils/constants'; // Importing the drinks array
+import { drinks, rules, routes } from '@/utils/constants';
 
 // Dynamically import MapComponent
 const DynamicMapComponent = dynamic(() => import('../components/Map'), { ssr: false });
@@ -18,7 +18,7 @@ const HowToPlayPage = () => {
     const router = useRouter();
 
     const handleBack = () => {
-        router.push(`/game`);
+        router.push(routes.GAME);
     };
 
     const polylinePositions: LatLngTuple[] = drinks.map(drink => [drink.lat, drink.lng]);

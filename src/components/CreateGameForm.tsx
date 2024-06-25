@@ -1,7 +1,8 @@
 import { Button, Snackbar, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, IconButton } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { createGame, joinGame } from '../services/api';
+import { createGame, joinGame } from '@/services/api';
+import { routes } from '@/utils/constants';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -31,7 +32,7 @@ const CreateGameForm = () => {
 
   const handleCloseDialog = () => {
     setShowDialog(false);
-    router.push(`/game`);
+    router.push(routes.GAME);
   };
 
   const handleCopyToClipboard = () => {

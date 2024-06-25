@@ -1,7 +1,8 @@
 import { Button, TextField, Box, Collapse } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { joinGame } from '../services/api';
+import { joinGame } from '@/services/api';
+import { routes } from '@/utils/constants';
 
 const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
   const [identifier, setIdentifier] = useState('');
@@ -21,7 +22,7 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
     event.preventDefault();
     try {
       await joinGame(identifier, name);
-      router.push(`/game`);
+      router.push(routes.GAME);
     } catch (error) {
       console.error('Failed to join game:', error);
       setErrorMessage('Failed to join game. Please check the identifier and try again.');

@@ -4,7 +4,7 @@ import { Box, Typography, Button, Paper } from '@mui/material';
 import { getPlayers } from '../services/api';
 import { getGameIdentifier } from '@/utils/utils';
 import ScoreboardTable from '../components/ScoreboardTable';
-import { drinks } from '@/utils/constants';
+import { routes } from '@/utils/constants';
 
 interface Player {
     name: string;
@@ -28,11 +28,11 @@ const GamePage = () => {
     };
 
     const handleScoreSubmit = () => {
-        router.push(`/submit-score`);
+        router.push(routes.SUBMIT);
     };
 
     const handleHowToPlay = () => {
-        router.push(`/how-to-play`);
+        router.push(routes.RULES);
     };
 
     useEffect(() => {
