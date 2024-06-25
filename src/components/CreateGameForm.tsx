@@ -1,8 +1,9 @@
-// components/CreateGameForm.tsx
-import { Button, Snackbar, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Button, Snackbar, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, IconButton } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { createGame, joinGame } from '../services/api';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CloseIcon from '@mui/icons-material/Close';
 
 const CreateGameForm = () => {
   const [name, setName] = useState('');
@@ -48,18 +49,38 @@ const CreateGameForm = () => {
   return (
     <Box sx={{ mt: 3 }}>
       <Dialog open={showDialog} onClose={handleCloseDialog}>
-        <DialogTitle>Game Created</DialogTitle>
-        <DialogContent>
+        <DialogTitle>
+          Game Created
+          <IconButton
+            aria-label="close"
+            onClick={handleCloseDialog}
+            sx={{ position: 'absolute', right: 8, top: 8, color: (theme) => theme.palette.grey[500] }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
           <DialogContentText>
             Your game has been created successfully! Share this link to invite others:
-            <Typography sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1 }}>{gameIdentifier}</Typography>
           </DialogContentText>
-          <Button onClick={handleCopyToClipboard} variant="contained" color="primary" sx={{ mt: 1 }}>
+          <Typography variant="h6" sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1, textAlign: 'center', wordBreak: 'break-all' }}>
+            {`${gameIdentifier}`}
+          </Typography>
+          <Button
+            onClick={handleCopyToClipboard}
+            variant="contained"
+            color="primary"
+            startIcon={<ContentCopyIcon />}
+            sx={{ mt: 2 }}
+            fullWidth
+          >
             Copy link to Clipboard
           </Button>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog}>Close</Button>
+          <Button onClick={handleCloseDialog} color="primary">
+            Play!
+          </Button>
         </DialogActions>
       </Dialog>
       <Snackbar
