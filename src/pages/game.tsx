@@ -59,6 +59,10 @@ const GamePage = () => {
         router.push(`/submit-score`);
     };
 
+    const handleHowToPlay = () => {
+        router.push(`/how-to-play`);
+    };
+
     return (
         <Box sx={{
             mt: 1,
@@ -105,13 +109,22 @@ const GamePage = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Button
-                variant="contained"
-                sx={{ mt: 4, bgcolor: '#4caf50', '&:hover': { bgcolor: '#45a049' } }}
-                onClick={handleScoreSubmit}
-            >
-                Submit Score
-            </Button>
+            <Paper sx={{ mt: 4, p: 3, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 3 }}>
+                <Button
+                    variant="contained"
+                    sx={{ mb: 2, bgcolor: '#4caf50', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
+                    onClick={handleScoreSubmit}
+                >
+                    Submit Score
+                </Button>
+                <Button
+                    variant="contained"
+                    sx={{ bgcolor: '#4caf50', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
+                    onClick={handleHowToPlay}
+                >
+                    How to Play
+                </Button>
+            </Paper>
         </Box>
     );
 };
