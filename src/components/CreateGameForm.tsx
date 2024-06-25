@@ -1,11 +1,13 @@
 // components/CreateGameForm.tsx
-import { Button, TextField, Box, Collapse } from '@mui/material';
+import { Button, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { createGame, joinGame } from '../services/api';
 
 const CreateGameForm = () => {
   const [name, setName] = useState('');
+  const [showDialog, setShowDialog] = useState(false);
+  const [gameIdentifier, setGameIdentifier] = useState('');
   const [showForm, setShowForm] = useState(false);
   const router = useRouter();
 
@@ -14,7 +16,8 @@ const CreateGameForm = () => {
     try {
       const game = await createGame();
       await joinGame(game.identifier, name);
-      router.push(`/game`);
+      setGameIdentifier(game.identifier);
+      setShowDialog(true);
     } catch (error) {
       console.error('Failed to create and join game:', error);
     }
@@ -24,8 +27,25 @@ const CreateGameForm = () => {
     setShowForm(!showForm);
   };
 
+  const handleCloseDialog = () => {
+    setShowDialog(false);
+    router.push(`/game`);
+  };
+
   return (
     <Box sx={{ mt: 3 }}>
+      <Dialog open={showDialog} onClose={handleCloseDialog}>
+        <DialogTitle>Game Created</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Your game has been created successfully! Here's the game identifier which you can share with others:
+            <Typography sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1 }}>{gameIdentifier}</Typography>
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog}>Close</Button>
+        </DialogActions>
+      </Dialog>
       <Button variant="contained" color="primary" onClick={toggleFormVisibility}>
         {showForm ? 'Back' : 'Create Game'}
       </Button>
