@@ -1,4 +1,3 @@
-// src/theme.ts
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -49,6 +48,17 @@ const theme = createTheme({
     button: {
       fontSize: '0.875rem',
       textTransform: 'none',
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          background: 'linear-gradient(135deg, #2b363b 0%, #303b3e 50%, #2b363b 100%)',
+          margin: 0,
+          fontFamily: 'Roboto, Arial, sans-serif',
+        },
+      },
     },
   },
 });
