@@ -77,11 +77,11 @@ const GamePage = () => {
             <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
                 Scoreboard
             </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap:1 }}>
                 <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>
                     <em>Game - {gameIdentifier}</em>
                 </Typography>
-                <IconButton onClick={handleCopyToClipboard} color="primary" size="small">
+                <IconButton onClick={handleCopyToClipboard} color="primary" size="small" sx={{mt: -.6}}>
                     <ShareIcon />
                 </IconButton>
             </Box>

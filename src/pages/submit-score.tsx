@@ -90,20 +90,22 @@ const SubmitScorePage = () => {
                 helperText={error}
                 sx={{ mb: 2, borderRadius: 1 }}
             />
-            <Button
-                type="submit"
-                variant="contained"
-                sx={{ mt: 1, mb: 2, bgcolor: '#389e5c', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
-            >
-                Submit
-            </Button>
-            <Button
-                variant="outlined"
-                onClick={handleBack}
-                sx={{ mt: 1, mb: 2, borderColor: '#389e5c', '&:hover': { borderColor: '#45a049' }, width: '200px' }}
-            >
-                Back
-            </Button>
+            <Paper sx={{ mt: 4, p: 3, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 3 }}>
+                <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{ mb: 2, bgcolor: '#389e5c', width: '200px' }}
+                >
+                    Submit
+                </Button>
+                <Button
+                    variant="outlined"
+                    onClick={handleBack}
+                    sx={{ borderColor: '#389e5c', width: '200px' }}
+                >
+                    Back
+                </Button>
+            </Paper>
         </Box>
     );
 };
