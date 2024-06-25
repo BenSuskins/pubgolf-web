@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { getPlayers } from '../services/api';
+import { getGameIdentifier } from '@/services/utils';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: theme.palette.action.hover,
@@ -19,18 +20,28 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const GamePage = () => {
     const router = useRouter();
     const [players, setPlayers] = useState([]);
+    const [gameIdentifier, setGameIdentifier] = useState('');
 
     const fetchPlayers = async () => {
         const playersData = await getPlayers();
         setPlayers(playersData);
     };
 
+    const fetchGameIdentifier = async () => {
+        const gameIdentifier = getGameIdentifier();
+        setGameIdentifier(gameIdentifier);
+    };
+
     useEffect(() => {
         fetchPlayers();
-        const interval = setInterval(fetchPlayers, 30000); // Refresh every 30 seconds
+        const interval = setInterval(fetchPlayers, 30000);
 
-        return () => clearInterval(interval); // Cleanup the interval on component unmount
+        return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        fetchGameIdentifier();
+    }, [])
 
     const handleScoreSubmit = () => {
         router.push(`/submit-score`);
@@ -47,7 +58,7 @@ const GamePage = () => {
             my: 2
         }}>
             <Typography variant="h4" gutterBottom>
-                Scoreboard
+                Scoreboard - {gameIdentifier}
             </Typography>
             <TableContainer component={Paper}>
                 <Table aria-label="scoreboard table">
