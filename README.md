@@ -1,3 +1,12 @@
+# Pub Golf UI
+
+This is a Frontend for the [Pubgolf](https://github.com/BenSuskins/pubgolf)] application.
+
+It uses Next.js and Typescript.
+
+![Pub Golf Home Page](docs/home.png?raw=true "Home Page")
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
