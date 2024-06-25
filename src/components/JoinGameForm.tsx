@@ -34,17 +34,15 @@ const JoinGameForm = ({ gameIdentifier }) => {
 
   return (
     <Box sx={{ mt: 3 }}>
-      <IconButton
-        color="primary"
+      <Button
         onClick={toggleFormVisibility}
-        sx={{ mt: 2, mb: 2 }}
-        size="large"
+        type="submit"
+        variant="contained"
+        color="primary"
+        sx={{ mt: 3, mb: 2, width: '200px' }}
       >
-        <GroupAddIcon fontSize="large" />
-        <Typography variant="button" sx={{ ml: 1 }}>
-          {showForm ? 'Back' : 'Join Game'}
-        </Typography>
-      </IconButton>
+        {showForm ? 'Back' : 'Join Game'}
+      </Button>
       <Collapse in={showForm}>
         <Box component="form" onSubmit={handleJoinGame} noValidate sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
           <TextField

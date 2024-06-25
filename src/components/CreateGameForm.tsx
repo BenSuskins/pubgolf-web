@@ -90,18 +90,15 @@ const CreateGameForm = () => {
         onClose={handleSnackbarClose}
         message="Game identifier copied to clipboard"
       />
-
-      <IconButton
-        color="primary"
+      <Button
+        type="submit"
         onClick={toggleFormVisibility}
-        sx={{ mt: 2, mb: 2 }}
-        size="large"
+        variant="contained"
+        color="primary"
+        sx={{ mt: 3, mb: 2, width: '200px' }}
       >
-        <AddCircleIcon fontSize="large" />
-        <Typography variant="button" sx={{ ml: 1 }}>
-          {showForm ? 'Back' : 'Create Game'}
-        </Typography>
-      </IconButton>
+        {showForm ? 'Back' : 'Create Game'}
+      </Button>
       <Collapse in={showForm}>
         <Box component="form" onSubmit={handleCreateAndJoinGame} noValidate sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
           <TextField
