@@ -31,11 +31,14 @@ const GamePage = () => {
                 Scoreboard
             </Typography>
             <TableContainer component={Paper}>
-                <Table aria-label="simple table">
+                <Table aria-label="scoreboard table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Player Name</TableCell>
-                            <TableCell align="right">Total Score</TableCell>
+                            {Array.from({ length: 9 }, (_, i) => (
+                                <TableCell key={i} align="right">Hole {i + 1}</TableCell>
+                            ))}
+                            <TableCell align="right">Total</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -44,6 +47,9 @@ const GamePage = () => {
                                 <TableCell component="th" scope="row">
                                     {player.name}
                                 </TableCell>
+                                {player.scores.map((score, index) => (
+                                    <TableCell key={index} align="right">{score}</TableCell>
+                                ))}
                                 <TableCell align="right">{player.totalScore}</TableCell>
                             </TableRow>
                         ))}
