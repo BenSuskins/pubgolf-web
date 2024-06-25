@@ -1,22 +1,22 @@
-// components/JoinGameForm.tsx
+// components/CreateGameForm.tsx
 import { Button, TextField, Box, Collapse } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { joinGame } from '../services/api';
+import { createGame, joinGame } from '../services/api';
 
-const JoinGameForm = () => {
-  const [identifier, setIdentifier] = useState('');
+const CreateGameForm = () => {
   const [name, setName] = useState('');
   const [showForm, setShowForm] = useState(false);
   const router = useRouter();
 
-  const handleJoinGame = async (event: React.FormEvent) => {
+  const handleCreateAndJoinGame = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      await joinGame(identifier, name);
-      router.push(`/game?identifier=${identifier}&name=${name}`);
+      const game = await createGame();
+      await joinGame(game.identifier, name);
+      router.push(`/game?identifier=${game.identifier}&name=${name}`);
     } catch (error) {
-      console.error('Failed to join game:', error);
+      console.error('Failed to create and join game:', error);
     }
   };
 
@@ -26,11 +26,11 @@ const JoinGameForm = () => {
 
   return (
     <Box sx={{ mt: 3 }}>
-      <Button variant="outlined" color="primary" onClick={toggleFormVisibility}>
-        {showForm ? 'Back' : 'Join a Game'}
+      <Button variant="contained" color="primary" onClick={toggleFormVisibility}>
+        {showForm ? 'Back' : 'Create Game'}
       </Button>
       <Collapse in={showForm}>
-        <Box component="form" onSubmit={handleJoinGame} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleCreateAndJoinGame} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -39,20 +39,9 @@ const JoinGameForm = () => {
             label="Your Name"
             name="name"
             autoComplete="name"
+            autoFocus
             value={name}
             onChange={(e) => setName(e.target.value)}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="identifier"
-            label="Game Identifier"
-            name="identifier"
-            autoComplete="identifier"
-            autoFocus
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
           />
           <Button
             type="submit"
@@ -60,7 +49,7 @@ const JoinGameForm = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Join Game
+            Create Game
           </Button>
         </Box>
       </Collapse>
@@ -68,4 +57,4 @@ const JoinGameForm = () => {
   );
 };
 
-export default JoinGameForm;
+export default CreateGameForm;

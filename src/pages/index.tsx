@@ -1,19 +1,22 @@
 // pages/index.tsx
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import CreateGameButton from '../components/CreateGameButton';
+import { Box, Typography } from '@mui/material';
+import CreateGameForm from '../components/CreateGameForm';
 import JoinGameForm from '../components/JoinGameForm';
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <Box sx={{ flexGrow: 1, p: 3, textAlign: 'center' }}>
       <Head>
         <title>Pub Golf</title>
       </Head>
-      <h1>Welcome to Pub Golf</h1>
-      <CreateGameButton />
+      <Typography variant="h4" gutterBottom component="h1">
+        Welcome to Pub Golf
+      </Typography>
+      <CreateGameForm />
       <JoinGameForm />
-    </div>
+    </Box>
   );
 };
 
