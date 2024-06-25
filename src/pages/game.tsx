@@ -90,7 +90,10 @@ const GamePage = () => {
             boxShadow: 5,
         }}>
             <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: '#fff' }}>
-                Scoreboard - {gameIdentifier}
+                Scoreboard
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom sx={{ color: '#fff' }}>
+                Game - {gameIdentifier}
             </Typography>
             <TableContainer component={Paper} sx={{ overflowX: 'auto', mt: 2, boxShadow: 3 }}>
                 <Table stickyHeader aria-label="scoreboard table">
