@@ -8,7 +8,7 @@ const SubmitScorePage = () => {
     const router = useRouter();
     const [hole, setHole] = useState('');
     const [score, setScore] = useState('');
-    const [error, setError] = useState(''); // For managing input errors
+    const [error, setError] = useState('');
 
     const validateScore = (score: string) => {
         const numScore = parseInt(score);
@@ -23,7 +23,7 @@ const SubmitScorePage = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         if (!validateScore(score)) {
-            return; // Prevent submission if the score is invalid
+            return;
         }
 
         try {

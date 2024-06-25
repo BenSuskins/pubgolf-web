@@ -37,7 +37,7 @@ const CreateGameForm = () => {
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}?identifier=${gameIdentifier}`).then(() => {
-      setOpenSnackbar(true);  // Show feedback that the identifier was copied.
+      setOpenSnackbar(true); 
     }, (err) => {
       console.error('Could not copy text: ', err);
     });

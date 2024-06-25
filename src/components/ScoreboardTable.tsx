@@ -31,9 +31,9 @@ const getScoreColor = (score: number, par: number): string => {
     if (score === par) {
         return '#fff';
     } else if (score < par) {
-        return '#4caf50'; // Green for below par
+        return '#4caf50'; 
     } else {
-        return '#f44336'; // Red for above par
+        return '#f44336'; 
     }
 };
 
