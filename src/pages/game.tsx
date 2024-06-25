@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Typography, Button, Paper, Snackbar, IconButton, Alert } from '@mui/material';
 import { getPlayers } from '../services/api';
-import { getGameIdentifier } from '@/utils/utils';
+import { getGameIdentifier, getShareLink } from '@/utils/utils';
 import ScoreboardTable from '../components/ScoreboardTable';
 import { routes } from '@/utils/constants';
 import ShareIcon from '@mui/icons-material/Share';
@@ -38,7 +38,7 @@ const GamePage = () => {
     };
 
     const handleCopyToClipboard = () => {
-        navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}?identifier=${gameIdentifier}`).then(() => {
+        navigator.clipboard.writeText(getShareLink()).then(() => {
             setOpenSnackbar(true);
         }, (err) => {
             console.error('Could not copy text: ', err);

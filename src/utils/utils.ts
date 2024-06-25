@@ -28,3 +28,7 @@ export const setPlayerName = (playerName: string) => {
 export const setGameIdentifier = (gameIdentifier: string) => {
   localStorage.setItem('gameIdentifier', gameIdentifier);
 }
+
+export const getShareLink = (): string => {
+  return `${window.location.protocol}//${window.location.host}?identifier=${getGameIdentifier()}`
+}

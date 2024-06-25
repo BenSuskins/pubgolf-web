@@ -5,6 +5,7 @@ import { createGame, joinGame } from '@/services/api';
 import { routes } from '@/utils/constants';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CloseIcon from '@mui/icons-material/Close';
+import { getShareLink } from '@/utils/utils';
 
 const CreateGameForm = () => {
   const [name, setName] = useState('');
@@ -36,7 +37,7 @@ const CreateGameForm = () => {
   };
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(`${window.location.protocol}//${window.location.host}?identifier=${gameIdentifier}`).then(() => {
+    navigator.clipboard.writeText(getShareLink()).then(() => {
       setOpenSnackbar(true);
     }, (err) => {
       console.error('Could not copy text: ', err);
@@ -75,7 +76,7 @@ const CreateGameForm = () => {
             sx={{ mt: 2 }}
             fullWidth
           >
-            Copy link to Clipboard
+            Copy invite to Clipboard
           </Button>
         </DialogContent>
         <DialogActions sx={{ justifyContent: 'center' }}>
