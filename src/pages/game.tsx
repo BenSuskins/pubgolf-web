@@ -1,9 +1,20 @@
 // pages/game.tsx
+import { styled } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { getPlayers } from '../services/api';
-import { getGameIdentifier } from '@/services/utils';
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    backgroundColor: theme.palette.action.hover,
+    fontWeight: 'bold',
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+        backgroundColor: theme.palette.action.hover,
+    },
+}));
 
 const GamePage = () => {
     const router = useRouter();
@@ -24,7 +35,6 @@ const GamePage = () => {
     const handleScoreSubmit = () => {
         router.push(`/submit-score`);
     };
-
     return (
         <Box sx={{ p: 3 }}>
             <Typography variant="h4" gutterBottom>
@@ -34,24 +44,24 @@ const GamePage = () => {
                 <Table aria-label="scoreboard table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Player Name</TableCell>
+                            <StyledTableCell>Player Name</StyledTableCell>
                             {Array.from({ length: 9 }, (_, i) => (
-                                <TableCell key={i} align="right">Hole {i + 1}</TableCell>
+                                <StyledTableCell key={i} align="right">Hole {i + 1}</StyledTableCell>
                             ))}
-                            <TableCell align="right">Total</TableCell>
+                            <StyledTableCell align="right">Total</StyledTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {players.map((player) => (
-                            <TableRow key={player.name}>
-                                <TableCell component="th" scope="row">
+                        {players.map((player, index) => (
+                            <StyledTableRow key={player.name}>
+                                <StyledTableCell component="th" scope="row">
                                     {player.name}
-                                </TableCell>
-                                {player.scores.map((score, index) => (
-                                    <TableCell key={index} align="right">{score}</TableCell>
+                                </StyledTableCell>
+                                {player.scores.map((score, i) => (
+                                    <TableCell key={i} align="right">{score}</TableCell>
                                 ))}
                                 <TableCell align="right">{player.totalScore}</TableCell>
-                            </TableRow>
+                            </StyledTableRow>
                         ))}
                     </TableBody>
                 </Table>
