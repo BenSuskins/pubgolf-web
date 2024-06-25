@@ -99,9 +99,9 @@ const CreateGameForm = () => {
       <Button
         type="submit"
         onClick={toggleFormVisibility}
-        variant="contained"
+        variant={showForm ? 'outlined' : 'contained'}
         color="primary"
-        sx={{ mb: 3, width: '200px' }}
+        sx={{ width: '200px' }}
       >
         {showForm ? 'Back' : 'Create Game'}
       </Button>
@@ -121,7 +121,7 @@ const CreateGameForm = () => {
             type="submit"
             variant="contained"
             color="primary"
-            sx={{ mt: 3, mb: 2, width: '200px' }}
+            sx={{ mt: 3, mb: 3, width: '200px' }}
           >
             Create
           </Button>

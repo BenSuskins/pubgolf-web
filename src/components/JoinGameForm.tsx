@@ -38,9 +38,9 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
       <Button
         onClick={toggleFormVisibility}
         type="submit"
-        variant="contained"
+        variant={showForm ? 'outlined' : 'contained'}
         color="primary"
-        sx={{ width: '200px' }}
+        sx={{ mt: 3, width: '200px' }}
       >
         {showForm ? 'Back' : 'Join Game'}
       </Button>
