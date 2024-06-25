@@ -29,6 +29,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
+const parValues = [1, 3, 2, 2, 2, 2, 4, 1, 1];
+
 const GamePage = () => {
     const router = useRouter();
     const [players, setPlayers] = useState([]);
@@ -61,6 +63,16 @@ const GamePage = () => {
 
     const handleHowToPlay = () => {
         router.push(`/how-to-play`);
+    };
+
+    const getScoreColor = (score, par) => {
+        if (score === par) {
+            return '#fff';
+        } else if (score < par) {
+            return '#4caf50'; // Green for below par
+        } else {
+            return '#f44336'; // Red for above par
+        }
     };
 
     return (
@@ -101,7 +113,9 @@ const GamePage = () => {
                                     </Box>
                                 </StickyTableCell>
                                 {player.scores.map((score, i) => (
-                                    <TableCell key={i} align="right">{score}</TableCell>
+                                    <TableCell key={i} align="right" sx={{ color: getScoreColor(score, parValues[i]) }}>
+                                        {score}
+                                    </TableCell>
                                 ))}
                                 <TableCell align="right">{player.totalScore}</TableCell>
                             </StyledTableRow>
