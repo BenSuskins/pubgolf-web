@@ -1,13 +1,13 @@
-// pages/game.tsx
 import { styled } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar } from '@mui/material';
 import { getPlayers } from '../services/api';
 import { getGameIdentifier } from '@/services/utils';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    backgroundColor: theme.palette.action.hover,
+    backgroundColor: theme.palette.primary.dark,
+    color: theme.palette.common.white,
     fontWeight: 'bold',
     zIndex: 2, // Higher z-index for header cells
 }));
@@ -23,6 +23,9 @@ const StickyTableCell = styled(TableCell)(({ theme }) => ({
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
+    },
+    '&:hover': {
+        backgroundColor: theme.palette.action.selected,
     },
 }));
 
@@ -50,7 +53,7 @@ const GamePage = () => {
 
     useEffect(() => {
         fetchGameIdentifier();
-    }, [])
+    }, []);
 
     const handleScoreSubmit = () => {
         router.push(`/submit-score`);
@@ -66,8 +69,11 @@ const GamePage = () => {
             mx: 'auto',
             my: 2,
             maxWidth: '1000px',
+            backgroundColor: '#2e2e2e', // Dark background to match the theme
+            borderRadius: 2,
+            boxShadow: 5,
         }}>
-            <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: '#fff' }}>
                 Scoreboard - {gameIdentifier}
             </Typography>
             <TableContainer component={Paper} sx={{ overflowX: 'auto', mt: 2, boxShadow: 3 }}>
@@ -85,7 +91,10 @@ const GamePage = () => {
                         {players.map((player, index) => (
                             <StyledTableRow key={player.name}>
                                 <StickyTableCell component="th" scope="row">
-                                    {player.name}
+                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                        <Avatar sx={{ bgcolor: '#4caf50', mr: 2 }}>{player.name.charAt(0).toUpperCase()}</Avatar>
+                                        {player.name}
+                                    </Box>
                                 </StickyTableCell>
                                 {player.scores.map((score, i) => (
                                     <TableCell key={i} align="right">{score}</TableCell>
@@ -98,8 +107,7 @@ const GamePage = () => {
             </TableContainer>
             <Button
                 variant="contained"
-                color="primary"
-                sx={{ mt: 4, backgroundColor: '#4caf50', '&:hover': { backgroundColor: '#45a049' } }}
+                sx={{ mt: 4, bgcolor: '#4caf50', '&:hover': { bgcolor: '#45a049' } }}
                 onClick={handleScoreSubmit}
             >
                 Submit Score
