@@ -60,10 +60,10 @@ const GamePage = () => {
             borderRadius: 2,
             boxShadow: 5,
         }}>
-            <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: '#fff' }}>
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
                 Scoreboard
             </Typography>
-            <Typography variant="subtitle1" gutterBottom sx={{ color: '#fff' }}>
+            <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>
                 <em>Game - {gameIdentifier}</em>
             </Typography>
             <ScoreboardTable players={players} />
