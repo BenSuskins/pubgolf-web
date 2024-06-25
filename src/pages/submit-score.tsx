@@ -1,7 +1,7 @@
 // pages/submit-score.tsx
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { Box, Button, TextField, Typography, MenuItem, FormControl, InputLabel, Select, Snackbar, Alert } from '@mui/material';
+import { Box, Button, TextField, Typography, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
 import { submitScore } from '../services/api';
 
 const SubmitScorePage = () => {
@@ -29,10 +29,7 @@ const SubmitScorePage = () => {
 
         try {
             await submitScore(parseInt(hole), parseInt(score));
-            setSnackbarOpen(true); // Show success message
-            setTimeout(() => { // Redirect after showing message
-                router.push(`/game`);
-            }, 2000);
+            router.push(`/game`);
         } catch (error) {
             console.error('Failed to submit score:', error);
             setError('Failed to submit score.');
@@ -101,11 +98,6 @@ const SubmitScorePage = () => {
             >
                 Back
             </Button>
-            <Snackbar open={snackbarOpen} autoHideDuration={1000} onClose={() => setSnackbarOpen(false)}>
-                <Alert onClose={() => setSnackbarOpen(false)} severity="success" sx={{ width: '100%' }}>
-                    Score submitted successfully!
-                </Alert>
-            </Snackbar>
         </Box>
     );
 };
