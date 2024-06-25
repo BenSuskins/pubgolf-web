@@ -33,7 +33,7 @@ const HowToPlayPage = () => {
             mx: 'auto',
             my: 2,
             maxWidth: '800px',
-            backgroundColor: '#2e2e2e',
+            backgroundColor: '#4a555a',
             borderRadius: 2,
             boxShadow: 5,
         }}>

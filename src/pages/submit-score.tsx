@@ -52,7 +52,7 @@ const SubmitScorePage = () => {
                 mx: 'auto',
                 my: 2,
                 maxWidth: '1000px',
-                backgroundColor: '#2e2e2e', // Dark background to match the theme
+                backgroundColor: '#4a555a', // Dark background to match the theme
                 borderRadius: 2,
                 boxShadow: 5,
             }}
