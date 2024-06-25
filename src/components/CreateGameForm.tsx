@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { createGame, joinGame } from '@/services/api';
 import { routes } from '@/utils/constants';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ShareIcon from '@mui/icons-material/Share';
 import CloseIcon from '@mui/icons-material/Close';
 import { getShareLink } from '@/utils/utils';
 
@@ -72,11 +72,11 @@ const CreateGameForm = () => {
             onClick={handleCopyToClipboard}
             variant="outlined"
             color="primary"
-            startIcon={<ContentCopyIcon />}
+            startIcon={<ShareIcon />}
             sx={{ mt: 2 }}
             fullWidth
           >
-            Copy invite to Clipboard
+            Share invite
           </Button>
         </DialogContent>
         <DialogActions sx={{ justifyContent: 'center' }}>
