@@ -35,12 +35,16 @@ const GamePage = () => {
     const handleScoreSubmit = () => {
         router.push(`/submit-score`);
     };
+
     return (
         <Box sx={{
             mt: 1,
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'  // This line centers the children horizontally
+            alignItems: 'center',  // This line centers the children horizontally
+            p: 3,
+            mx: 'auto',
+            my: 2
         }}>
             <Typography variant="h4" gutterBottom>
                 Scoreboard
