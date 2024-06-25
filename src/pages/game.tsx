@@ -4,6 +4,15 @@ import { useRouter } from 'next/router';
 import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar } from '@mui/material';
 import { getPlayers } from '../services/api';
 import { getGameIdentifier } from '@/services/utils';
+import { list } from 'postcss';
+
+interface Player {
+    name: string;
+    scores: number[];
+    totalScore: number
+
+    // add other properties of the player object here if needed
+}
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
@@ -65,7 +74,7 @@ const GamePage = () => {
         router.push(`/how-to-play`);
     };
 
-    const getScoreColor = (score, par) => {
+    const getScoreColor = (score: number, par: number): string => {
         if (score === par) {
             return '#fff';
         } else if (score < par) {
@@ -107,7 +116,7 @@ const GamePage = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {players.map((player, index) => (
+                        {players.map((player: Player, index) => (
                             <StyledTableRow key={player.name}>
                                 <StickyTableCell component="th" scope="row">
                                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
