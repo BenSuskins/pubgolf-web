@@ -9,7 +9,7 @@ const SubmitScorePage = () => {
     const [score, setScore] = useState('');
     const [error, setError] = useState(''); // For managing input errors
 
-    const validateScore = (score) => {
+    const validateScore = (score: string) => {
         const numScore = parseInt(score);
         if (numScore < -10 || numScore > 10) {
             setError('Score must be between -10 and 10.');

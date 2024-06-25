@@ -3,10 +3,10 @@ import { Box, Button, Typography, Paper, Table, TableBody, TableCell, TableConta
 import { styled } from '@mui/system';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import * as L from 'leaflet';
 
 // Fix leaflet's default icon issue with Next.js
-delete L.Icon.Default.prototype._getIconUrl;
+delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
@@ -47,8 +47,9 @@ const HowToPlayPage = () => {
         { pub: 'Off Broadway', drink1: 'Jagerbomb (1)', drink2: 'Jagerbomb (1)', lat: 51.5373719548513, lng: -0.06138017268091661 },
         { pub: 'Sebright Arms', drink1: 'VK (1)', drink2: 'Smirnoff (1)', lat: 51.532039688673585, lng: -0.06306789819191375 },
     ];
-
-    const polylinePositions = drinks.map(drink => [drink.lat, drink.lng]);
+    
+    type LatLngTuple = [number, number];
+    const polylinePositions: LatLngTuple[]  = drinks.map(drink => [drink.lat, drink.lng]);
 
     return (
         <Box sx={{
@@ -119,7 +120,7 @@ const HowToPlayPage = () => {
                         />
                         <Polyline positions={polylinePositions} color="blue" />
                         {drinks.map((drink, index) => (
-                            <Marker key={index} position={[drink.lat, drink.lng]} color="blue">
+                            <Marker key={index} position={[drink.lat, drink.lng]}>
                                 <Popup>{drink.pub}</Popup>
                             </Marker>
                         ))}
