@@ -34,7 +34,7 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
   };
 
   return (
-    <Box sx={{ mt: 3 }}>
+    <Box sx={{ mt: -1 }}>
       <Button
         onClick={toggleFormVisibility}
         type="submit"

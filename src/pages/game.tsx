@@ -96,7 +96,7 @@ const GamePage = () => {
                 </Button>
                 <Button
                     variant="contained"
-                    sx={{ mb: 2, bgcolor: '#389e5c', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
+                    sx={{ bgcolor: '#389e5c', '&:hover': { bgcolor: '#45a049' }, width: '200px' }}
                     onClick={handleHowToPlay}
                 >
                     How to Play
