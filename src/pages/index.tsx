@@ -8,9 +8,6 @@ import JoinGameForm from '../components/JoinGameForm';
 const Home: NextPage = () => {
   return (
     <Box sx={{ flexGrow: 1, p: 3, textAlign: 'center' }}>
-      <Head>
-        <title>Pub Golf</title>
-      </Head>
       <Typography variant="h4" gutterBottom component="h1">
         Welcome to Pub Golf
       </Typography>
