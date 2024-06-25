@@ -62,14 +62,14 @@ const CreateGameForm = () => {
         </DialogTitle>
         <DialogContent dividers>
           <DialogContentText>
-            Your game has been created successfully! Share this link to invite others:
+            Game created successfully! Share this link to invite others:
           </DialogContentText>
           <Typography variant="h6" sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1, textAlign: 'center', wordBreak: 'break-all' }}>
             {`${gameIdentifier}`}
           </Typography>
           <Button
             onClick={handleCopyToClipboard}
-            variant="contained"
+            variant="outlined"
             color="primary"
             startIcon={<ContentCopyIcon />}
             sx={{ mt: 2 }}
@@ -78,8 +78,8 @@ const CreateGameForm = () => {
             Copy link to Clipboard
           </Button>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseDialog} color="primary">
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <Button variant="contained" fullWidth onClick={handleCloseDialog} color="primary">
             Play!
           </Button>
         </DialogActions>
