@@ -1,14 +1,20 @@
-import { styled } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Typography, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar } from '@mui/material';
+import { Box, Typography, Button, Paper } from '@mui/material';
 import { getPlayers } from '../services/api';
 import { getGameIdentifier } from '@/utils/utils';
+import ScoreboardTable from '../components/ScoreboardTable';
 import { drinks } from '@/utils/constants';
+
+interface Player {
+    name: string;
+    scores: number[];
+    totalScore: number;
+}
 
 const GamePage = () => {
     const router = useRouter();
-    const [players, setPlayers] = useState([]);
+    const [players, setPlayers] = useState<Player[]>([]);
     const [gameIdentifier, setGameIdentifier] = useState('');
 
     const fetchPlayers = async () => {
@@ -28,40 +34,6 @@ const GamePage = () => {
     const handleHowToPlay = () => {
         router.push(`/how-to-play`);
     };
-
-    const getScoreColor = (score: number, par: number): string => {
-        if (score === par) {
-            return '#fff';
-        } else if (score < par) {
-            return '#4caf50'; // Green for below par
-        } else {
-            return '#f44336'; // Red for above par
-        }
-    };
-
-    const StyledTableCell = styled(TableCell)(({ theme }) => ({
-        backgroundColor: theme.palette.primary.dark,
-        color: theme.palette.common.white,
-        fontWeight: 'bold',
-        zIndex: 2, // Higher z-index for header cells
-    }));
-    
-    const StickyTableCell = styled(TableCell)(({ theme }) => ({
-        position: 'sticky',
-        left: 0,
-        backgroundColor: theme.palette.background.paper,
-        zIndex: 1, // Lower z-index for sticky player name cells
-        fontWeight: 'bold',
-    }));
-    
-    const StyledTableRow = styled(TableRow)(({ theme }) => ({
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-        },
-        '&:hover': {
-            backgroundColor: theme.palette.action.selected,
-        },
-    }));
 
     useEffect(() => {
         fetchPlayers();
@@ -94,37 +66,7 @@ const GamePage = () => {
             <Typography variant="subtitle1" gutterBottom sx={{ color: '#fff' }}>
                 <em>Game - {gameIdentifier}</em>
             </Typography>
-            <TableContainer component={Paper} sx={{ overflowX: 'auto', mt: 2, boxShadow: 3 }}>
-                <Table stickyHeader aria-label="scoreboard table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Player Name</StyledTableCell>
-                            {drinks.map((_, index) => (
-                                <StyledTableCell key={index} align="right">Hole {index + 1}</StyledTableCell>
-                            ))}
-                            <StyledTableCell align="right">Total</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {players.map((player: Player, index) => (
-                            <StyledTableRow key={index}>
-                                <StickyTableCell component="th" scope="row">
-                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                        <Avatar sx={{ bgcolor: '#4caf50', mr: 2 }}>{player.name.charAt(0).toUpperCase()}</Avatar>
-                                        {player.name}
-                                    </Box>
-                                </StickyTableCell>
-                                {player.scores.map((score, i) => (
-                                    <TableCell key={i} align="right" sx={{ color: getScoreColor(score, drinks[i].par) }}>
-                                        {score}
-                                    </TableCell>
-                                ))}
-                                <TableCell align="right">{player.totalScore}</TableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            <ScoreboardTable players={players} />
             <Paper sx={{ mt: 4, p: 3, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 3 }}>
                 <Button
                     variant="contained"

@@ -22,5 +22,9 @@ interface JoinGameFormProps {
     gameIdentifier: string;
 };
 
+interface ScoreboardTableProps {
+    players: Player[];
+}
+
 type LatLngTuple = [number, number];
 
