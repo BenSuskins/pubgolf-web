@@ -1,5 +1,5 @@
 // components/CreateGameForm.tsx
-import { Button, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Button, Snackbar, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { createGame, joinGame } from '../services/api';
@@ -9,6 +9,7 @@ const CreateGameForm = () => {
   const [showDialog, setShowDialog] = useState(false);
   const [gameIdentifier, setGameIdentifier] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
   const router = useRouter();
 
   const handleCreateAndJoinGame = async (event: React.FormEvent) => {
@@ -32,6 +33,18 @@ const CreateGameForm = () => {
     router.push(`/game`);
   };
 
+  const handleCopyToClipboard = () => {
+    navigator.clipboard.writeText(gameIdentifier).then(() => {
+      setOpenSnackbar(true);  // Show feedback that the identifier was copied.
+    }, (err) => {
+      console.error('Could not copy text: ', err);
+    });
+  };
+
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+  };
+
   return (
     <Box sx={{ mt: 3 }}>
       <Dialog open={showDialog} onClose={handleCloseDialog}>
@@ -41,11 +54,21 @@ const CreateGameForm = () => {
             Your game has been created successfully! Here's the game identifier which you can share with others:
             <Typography sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1 }}>{gameIdentifier}</Typography>
           </DialogContentText>
+          <Button onClick={handleCopyToClipboard} variant="contained" color="primary" sx={{ mt: 1 }}>
+            Copy to Clipboard
+          </Button>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog}>Close</Button>
         </DialogActions>
       </Dialog>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        message="Game identifier copied to clipboard"
+      />
+
       <Button variant="contained" color="primary" onClick={toggleFormVisibility}>
         {showForm ? 'Back' : 'Create Game'}
       </Button>
