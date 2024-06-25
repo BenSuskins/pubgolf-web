@@ -1,8 +1,9 @@
 // components/JoinGameForm.tsx
-import { Button, TextField, Box, Collapse } from '@mui/material';
+import { Button, TextField, Box, Collapse, Typography, IconButton } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { joinGame } from '../services/api';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 const JoinGameForm = ({ gameIdentifier }) => {
   const [identifier, setIdentifier] = useState('');
@@ -32,41 +33,46 @@ const JoinGameForm = ({ gameIdentifier }) => {
 
   return (
     <Box sx={{ mt: 3 }}>
-      <Button variant="outlined" color="primary" onClick={toggleFormVisibility}>
-        {showForm ? 'Back' : 'Join a Game'}
-      </Button>
+      <IconButton
+        color="primary"
+        onClick={toggleFormVisibility}
+        sx={{ mt: 2, mb: 2 }}
+        size="large"
+      >
+        <GroupAddIcon fontSize="large" />
+        <Typography variant="button" sx={{ ml: 1 }}>
+          {showForm ? 'Back' : 'Join a Game'}
+        </Typography>
+      </IconButton>
       <Collapse in={showForm}>
-        <Box component="form" onSubmit={handleJoinGame} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleJoinGame} noValidate sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
           <TextField
             margin="normal"
             required
-            fullWidth
             id="name"
             label="Your Name"
             name="name"
-            autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            sx={{ borderRadius: 1, width: '300px' }}
           />
           <TextField
             margin="normal"
             required
-            fullWidth
             id="identifier"
             label="Game Identifier"
             name="identifier"
-            autoComplete="identifier"
-            autoFocus
             value={identifier}
             onChange={(e) => setIdentifier(e.target.value)}
+            sx={{ borderRadius: 1, width: '300px' }}
           />
           <Button
             type="submit"
-            fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            color="primary"
+            sx={{ mt: 3, mb: 2, width: '200px' }}
           >
-            Join Game
+            Join
           </Button>
         </Box>
       </Collapse>

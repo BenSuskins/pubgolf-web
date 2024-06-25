@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { createGame, joinGame } from '../services/api';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CloseIcon from '@mui/icons-material/Close';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const CreateGameForm = () => {
   const [name, setName] = useState('');
@@ -90,30 +91,36 @@ const CreateGameForm = () => {
         message="Game identifier copied to clipboard"
       />
 
-      <Button variant="contained" color="primary" onClick={toggleFormVisibility}>
-        {showForm ? 'Back' : 'Create Game'}
-      </Button>
+      <IconButton
+        color="primary"
+        onClick={toggleFormVisibility}
+        sx={{ mt: 2, mb: 2 }}
+        size="large"
+      >
+        <AddCircleIcon fontSize="large" />
+        <Typography variant="button" sx={{ ml: 1 }}>
+          {showForm ? 'Back' : 'Create Game'}
+        </Typography>
+      </IconButton>
       <Collapse in={showForm}>
-        <Box component="form" onSubmit={handleCreateAndJoinGame} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleCreateAndJoinGame} noValidate sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 2, alignItems: 'center' }}>
           <TextField
             margin="normal"
             required
-            fullWidth
             id="name"
             label="Your Name"
             name="name"
-            autoComplete="name"
-            autoFocus
             value={name}
             onChange={(e) => setName(e.target.value)}
+            sx={{ borderRadius: 1, width: '300px' }}
           />
           <Button
             type="submit"
-            fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            color="primary"
+            sx={{ mt: 3, mb: 2, width: '200px' }}
           >
-            Create Game
+            Create
           </Button>
         </Box>
       </Collapse>
