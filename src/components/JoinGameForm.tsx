@@ -8,7 +8,8 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
   const [identifier, setIdentifier] = useState('');
   const [name, setName] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [gameError, setGameError] = useState('');
+  const [nameError, setNameError] = useState('');
   const router = useRouter();
 
   useEffect(() => {
@@ -21,12 +22,24 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
   const handleJoinGame = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
+      if (!validateName(name)) {
+        return;
+      }
       await joinGame(identifier, name);
       router.push(routes.GAME);
     } catch (error) {
       console.error('Failed to join game:', error);
-      setErrorMessage('Failed to join game. Please check the identifier and try again.');
+      setGameError('Failed to join game. Please check the identifier and try again.');
     }
+  };
+
+  const validateName = (name: string) => {
+    if (name.length < 2) {
+      setNameError('Name must be greater than 2 characters.');
+      return false;
+    }
+    setNameError('');
+    return true;
   };
 
   const toggleFormVisibility = () => {
@@ -55,6 +68,8 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             sx={{ borderRadius: 1, width: '300px' }}
+            error={!!nameError}
+            helperText={nameError}
           />
           <TextField
             margin="normal"
@@ -65,8 +80,8 @@ const JoinGameForm: React.FC<JoinGameFormProps> = ({ gameIdentifier }) => {
             value={identifier}
             onChange={(e) => setIdentifier(e.target.value)}
             sx={{ borderRadius: 1, width: '300px' }}
-            error={!!errorMessage}
-            helperText={errorMessage}
+            error={!!gameError}
+            helperText={gameError}
           />
           <Button
             type="submit"

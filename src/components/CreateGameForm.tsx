@@ -13,11 +13,15 @@ const CreateGameForm = () => {
   const [gameIdentifier, setGameIdentifier] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
   const handleCreateAndJoinGame = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
+      if (!validateName(name)) {
+        return;
+      }
       const game = await createGame();
       await joinGame(game.identifier, name);
       setGameIdentifier(game.identifier);
@@ -26,6 +30,16 @@ const CreateGameForm = () => {
       console.error('Failed to create and join game:', error);
     }
   };
+
+  const validateName = (name: string) => {
+    if (name.length < 2) {
+      setErrorMessage('Name must be greater than 2 characters.');
+      return false;
+    }
+    setErrorMessage('');
+    return true;
+  };
+
 
   const toggleFormVisibility = () => {
     setShowForm(!showForm);
@@ -116,6 +130,8 @@ const CreateGameForm = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             sx={{ borderRadius: 1, width: '300px' }}
+            error={!!errorMessage}
+            helperText={errorMessage}
           />
           <Button
             type="submit"
