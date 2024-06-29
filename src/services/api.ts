@@ -36,8 +36,8 @@ export const joinGame = async (identifier: string, name: string) => {
 };
 
 export const submitScore = async (hole: number, score: number) => {
-  const identifier = getGameIdentifier(); 
-  const playerName = getPlayerName(); 
+  const identifier = getGameIdentifier();
+  const playerName = getPlayerName();
   const response = await api.post(`/games/${identifier}/players/${playerName}/score`, {
     hole: hole,
     score: score

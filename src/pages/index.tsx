@@ -14,14 +14,13 @@ const Home: NextPage = () => {
   const { identifier } = router.query;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
   const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
     const checkExistingGame = async () => {
       try {
         const playersData = await getPlayers();
-        if (playersData.length > 0 && getPlayerName() && !!identifier) {
+        if (playersData.length > 0 && getPlayerName()) {
           setOpenDialog(true);
         }
       } catch (error) {
