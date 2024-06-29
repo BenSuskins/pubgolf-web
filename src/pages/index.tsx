@@ -82,7 +82,7 @@ const Home: NextPage = () => {
       </Box>
       <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogTitle>
-          It looks like you've already joined a game
+          It looks like you&apos;ve already joined a game
         </DialogTitle>
         <DialogContent dividers>
           <DialogContentText>
