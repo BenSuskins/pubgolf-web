@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           setOpenDialog(true);
         }
       } catch (error) {
-        console.error('Failed to fetch players:', error);
+        console.debug('Failed to fetch players during initial load:', error);
       }
     };
 

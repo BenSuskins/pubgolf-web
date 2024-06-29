@@ -1,4 +1,3 @@
-// components/CreateGameForm.tsx
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, TextField, Box, Collapse, Typography, Alert } from '@mui/material';
