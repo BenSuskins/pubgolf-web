@@ -24,3 +24,11 @@ interface JoinGameFormProps {
 interface ScoreboardTableProps {
     players: Player[];
 }
+
+interface ShareDialogProps {
+    open: boolean;
+    onClose: () => void;
+    title: string;
+    gameIdentifier: string;
+    buttonText: string;
+}

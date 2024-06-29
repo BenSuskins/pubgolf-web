@@ -30,5 +30,8 @@ export const setGameIdentifier = (gameIdentifier: string) => {
 }
 
 export const getShareLink = (): string => {
-  return `${window.location.protocol}//${window.location.host}?identifier=${getGameIdentifier()}`
-}
+  if (typeof window !== 'undefined') {
+    return `${window.location.protocol}//${window.location.host}?identifier=${getGameIdentifier()}`;
+  }
+  return '';
+};

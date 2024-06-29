@@ -1,18 +1,16 @@
-import { Button, Snackbar, TextField, Box, Collapse, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, IconButton, Alert } from '@mui/material';
+// components/CreateGameForm.tsx
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { Button, TextField, Box, Collapse, Typography, Alert } from '@mui/material';
 import { createGame, joinGame } from '@/services/api';
 import { routes } from '@/utils/constants';
-import ShareIcon from '@mui/icons-material/Share';
-import CloseIcon from '@mui/icons-material/Close';
-import { getShareLink } from '@/utils/utils';
+import ShareDialog from './ShareDialog';
 
 const CreateGameForm = () => {
   const [name, setName] = useState('');
   const [showDialog, setShowDialog] = useState(false);
   const [gameIdentifier, setGameIdentifier] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [openSnackbar, setOpenSnackbar] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
@@ -40,7 +38,6 @@ const CreateGameForm = () => {
     return true;
   };
 
-
   const toggleFormVisibility = () => {
     setShowForm(!showForm);
   };
@@ -50,66 +47,15 @@ const CreateGameForm = () => {
     router.push(routes.GAME);
   };
 
-  const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(getShareLink()).then(() => {
-      setOpenSnackbar(true);
-    }, (err) => {
-      console.error('Could not copy text: ', err);
-    });
-  };
-
-  const handleSnackbarClose = () => {
-    setOpenSnackbar(false);
-  };
-
   return (
     <Box sx={{ mt: 0 }}>
-      <Dialog open={showDialog} onClose={handleCloseDialog}>
-        <DialogTitle>
-          Game Created
-          <IconButton
-            aria-label="close"
-            onClick={handleCloseDialog}
-            sx={{ position: 'absolute', right: 8, top: 8, color: (theme) => theme.palette.grey[500] }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent dividers>
-          <DialogContentText>
-            Game created successfully! Share this link to invite others:
-          </DialogContentText>
-          <Typography variant="h6" sx={{ mt: 2, p: 2, bgcolor: 'background.paper', borderRadius: 1, textAlign: 'center', wordBreak: 'break-all' }}>
-            {`${gameIdentifier}`}
-          </Typography>
-          <Button
-            onClick={handleCopyToClipboard}
-            variant="outlined"
-            color="primary"
-            startIcon={<ShareIcon />}
-            sx={{ mt: 2 }}
-            fullWidth
-          >
-            Share invite
-          </Button>
-        </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center' }}>
-          <Button variant="contained" fullWidth onClick={handleCloseDialog} color="primary">
-            Play!
-          </Button>
-        </DialogActions>
-      </Dialog>
-      <Snackbar open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}>
-        <Alert
-          onClose={handleSnackbarClose}
-          severity="success"
-          variant="filled"
-          sx={{ width: '100%' }}
-        >
-          Game invite copied to clipboard  </Alert>
-      </Snackbar>
+      <ShareDialog
+        open={showDialog}
+        onClose={handleCloseDialog}
+        title="Game Created"
+        gameIdentifier={gameIdentifier}
+        buttonText='Play!'
+      />
       <Button
         type="submit"
         onClick={toggleFormVisibility}

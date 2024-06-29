@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Typography, Button, Paper, Snackbar, IconButton, Alert } from '@mui/material';
 import { getPlayers } from '../services/api';
-import { getGameIdentifier, getShareLink } from '@/utils/utils';
+import { getGameIdentifier } from '@/utils/utils';
 import ScoreboardTable from '../components/ScoreboardTable';
 import { routes } from '@/utils/constants';
 import ShareIcon from '@mui/icons-material/Share';
+import ShareDialog from '../components/ShareDialog'; // Import ShareDialog
 
 interface Player {
     name: string;
@@ -17,7 +18,7 @@ const GamePage = () => {
     const router = useRouter();
     const [players, setPlayers] = useState<Player[]>([]);
     const [gameIdentifier, setGameIdentifier] = useState('');
-    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [showDialog, setShowDialog] = useState(false);
 
     const fetchPlayers = async () => {
         try {
@@ -41,20 +42,17 @@ const GamePage = () => {
         router.push(routes.RULES);
     };
 
-    const handleCopyToClipboard = () => {
-        navigator.clipboard.writeText(getShareLink()).then(() => {
-            setOpenSnackbar(true);
-        }, (err) => {
-            console.error('Could not copy text: ', err);
-        });
+    const handleShare = () => {
+        setShowDialog(true); // Show the ShareDialog
     };
 
-    const handleSnackbarClose = () => {
-        setOpenSnackbar(false);
+    const handleCloseDialog = () => {
+        setShowDialog(false);
     };
 
     useEffect(() => {
         fetchPlayers();
+        getGameIdentifier();
         const interval = setInterval(fetchPlayers, 30000);
 
         return () => clearInterval(interval);
@@ -85,7 +83,7 @@ const GamePage = () => {
                 <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>
                     <em>Game - {gameIdentifier}</em>
                 </Typography>
-                <IconButton onClick={handleCopyToClipboard} color="primary" size="small" sx={{ mt: -.6 }}>
+                <IconButton onClick={handleShare} color="primary" size="small" sx={{ mt: -.6 }}>
                     <ShareIcon />
                 </IconButton>
             </Box>
@@ -106,17 +104,13 @@ const GamePage = () => {
                     How to Play
                 </Button>
             </Paper>
-            <Snackbar open={openSnackbar}
-                autoHideDuration={6000}
-                onClose={handleSnackbarClose}>
-                <Alert
-                    onClose={handleSnackbarClose}
-                    severity="success"
-                    variant="filled"
-                    sx={{ width: '100%' }}
-                >
-                    Game invite copied to clipboard  </Alert>
-            </Snackbar>
+            <ShareDialog
+                open={showDialog}
+                onClose={handleCloseDialog}
+                title="Share Game"
+                gameIdentifier={gameIdentifier}
+                buttonText='Close'
+            />
         </Box>
     );
 };
