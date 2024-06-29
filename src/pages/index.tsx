@@ -21,7 +21,7 @@ const Home: NextPage = () => {
     const checkExistingGame = async () => {
       try {
         const playersData = await getPlayers();
-        if (playersData.length > 0 && getPlayerName()) {
+        if (playersData.length > 0 && getPlayerName() && !!identifier) {
           setOpenDialog(true);
         }
       } catch (error) {
