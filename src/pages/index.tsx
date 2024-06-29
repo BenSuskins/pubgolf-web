@@ -1,11 +1,13 @@
-// pages/index.tsx
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Box, Typography, Button, Paper, useMediaQuery, useTheme } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Box, Typography, Paper, useMediaQuery, useTheme, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, IconButton } from '@mui/material';
 import CreateGameForm from '../components/CreateGameForm';
 import JoinGameForm from '../components/JoinGameForm';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { getPlayers } from '@/services/api'; // Make sure this path is correct
+import { getPlayerName } from '@/utils/utils';
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -13,28 +15,54 @@ const Home: NextPage = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const [openDialog, setOpenDialog] = useState(false);
+
+  useEffect(() => {
+    const checkExistingGame = async () => {
+      try {
+        const playersData = await getPlayers();
+        if (playersData.length > 0 && getPlayerName()) {
+          setOpenDialog(true);
+        }
+      } catch (error) {
+        console.error('Failed to fetch players:', error);
+      }
+    };
+
+    checkExistingGame();
+  }, []);
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleRejoinGame = () => {
+    router.push('/game');
+  };
+
   return (
     <Box sx={{ flexGrow: 1, p: 3, textAlign: 'center' }}>
       <Head>
         <title>Welcome to Pub Golf</title>
       </Head>
       <Box sx={{
-            mt: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            p: 3,
-            mx: 'auto',
-            my: 2,
-            maxWidth: '1000px',
-            backgroundColor: '#4a555a', // Dark background to match the theme
-            borderRadius: 2,
-            boxShadow: 5,
-        }}>        <Typography variant="h2" gutterBottom component="h1">
+        mt: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        p: 3,
+        mx: 'auto',
+        my: 2,
+        maxWidth: '1000px',
+        backgroundColor: '#4a555a', // Dark background to match the theme
+        borderRadius: 2,
+        boxShadow: 5,
+      }}>
+        <Typography variant="h2" gutterBottom component="h1">
           Welcome to Pub Golf
         </Typography>
         <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>
-        Pub Golf is a fun, social game that combines the challenge of golf scoring with the enjoyment of visiting your favorite pubs. Join a game or create a new one to start your adventure!
+          Pub Golf is a fun, social game that combines the challenge of golf scoring with the enjoyment of visiting your favorite pubs. Join a game or create a new one to start your adventure!
         </Typography>
         <Box sx={{ my: 4 }}>
           <Image
@@ -45,13 +73,31 @@ const Home: NextPage = () => {
           />
         </Box>
         <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>
-        To get started, create a new game or join an existing game by entering the game identifier below.
+          To get started, create a new game or join an existing game by entering the game identifier below.
         </Typography>
         <Paper sx={{ mt: 4, p: 3, width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', boxShadow: 3 }}>
           <CreateGameForm />
           <JoinGameForm gameIdentifier={identifier as string} />
         </Paper>
       </Box>
+      <Dialog open={openDialog} onClose={handleCloseDialog}>
+        <DialogTitle>
+          It looks like you've already joined a game
+        </DialogTitle>
+        <DialogContent dividers>
+          <DialogContentText>
+            Do you want to rejoin?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions sx={{ justifyContent: 'center' }}>
+          <Button variant="outlined" fullWidth onClick={handleCloseDialog} color="primary">
+            No
+          </Button>
+          <Button variant="contained" fullWidth onClick={handleRejoinGame} color="primary">
+            Yes
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
