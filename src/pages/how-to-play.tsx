@@ -21,8 +21,6 @@ const HowToPlayPage = () => {
         router.push(routes.GAME);
     };
 
-    const polylinePositions: LatLngTuple[] = drinks.map(drink => [drink.lat, drink.lng]);
-
     return (
         <Box sx={{
             mt: 1,
@@ -87,7 +85,7 @@ const HowToPlayPage = () => {
                     Route
                 </Typography>
                 <Box sx={{ width: '100%', height: '400px' }}>
-                    <DynamicMapComponent drinks={drinks} polylinePositions={polylinePositions} />
+                    <DynamicMapComponent drinks={drinks} />
                 </Box>
             </Paper>
             <Button

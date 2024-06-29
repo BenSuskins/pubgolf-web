@@ -12,7 +12,7 @@ L.Icon.Default.mergeOptions({
     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-const MapComponent: FC<{ drinks: { pub: string, lat: number, lng: number }[] }> = ({ drinks }) => {
+const MapComponent: FC<MapComponentProps> = ({ drinks }) => {
     return (
         <MapContainer center={[51.53877, -0.04521]} zoom={14} style={{ width: '100%', height: '100%' }}>
             <TileLayer

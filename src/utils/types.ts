@@ -15,7 +15,6 @@ interface Player {
 
 interface MapComponentProps {
     drinks: DrinkInfo[];
-    polylinePositions: [number, number][];
 }
 
 interface JoinGameFormProps {
@@ -25,6 +24,3 @@ interface JoinGameFormProps {
 interface ScoreboardTableProps {
     players: Player[];
 }
-
-type LatLngTuple = [number, number];
-

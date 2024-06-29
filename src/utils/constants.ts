@@ -28,7 +28,7 @@ export const routes = {
     RULES: "/how-to-play",
 };
 
-export const walkingRoute: number[][] = [
+export const walkingRoute: [number, number][] = [
     [51.5469296, -0.0242917],
     [51.5471171, -0.0245255],
     [51.547006, -0.0250376],
