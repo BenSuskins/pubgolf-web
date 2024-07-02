@@ -2,7 +2,7 @@
 
 This is a Frontend for the [Pubgolf](https://github.com/BenSuskins/pubgolf) application.
 
-It uses Next.js and Typescript.
+It uses Next.js, Typescript and MUI.
 
 ![Pub Golf Home Page](docs/home.png?raw=true "Home Page")
 
