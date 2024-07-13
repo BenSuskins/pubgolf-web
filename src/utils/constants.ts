@@ -12,10 +12,10 @@ export const drinks: DrinkInfo[] = [
     { pub: 'Beer Merchants Tap', drinkA: 'Beer', drinkB: 'Double Vodka & Single Vodka', par: 3, lat: 51.544537514752406, lng: -0.024089676469998805 },
     { pub: 'No 90', drinkA: 'Wine', drinkB: 'Double Gin', par: 2, lat: 51.5441483399746, lng: -0.022686143228642857 },
     { pub: 'The Lord Napier Star', drinkA: 'Cider', drinkB: 'Double Rum', par: 2, lat: 51.54317410748569, lng: -0.025277542906490397 },
-    { pub: 'The Kenton Pub', drinkA: 'Cocktail', drinkB: 'Cocktail', par: 2, lat: 51.54412976012798, lng: -0.044405712731114565 },
-    { pub: 'Peoples Park Tavern', drinkA: 'Spirit Mixer', drinkB: 'Spirit Mixer', par: 2, lat: 51.541594024295264, lng: -0.037807392511082755 },
-    { pub: 'The Lauriston', drinkA: 'Guiness', drinkB: '2 x Double Whiskey', par: 4, lat: 51.53798547783272, lng: -0.04512754105558223 },
-    { pub: 'Off Broadway', drinkA: 'Jagerbomb', drinkB: 'Jagerbomb', par: 1, lat: 51.5373719548513, lng: -0.06138017268091661 },
+    { pub: 'Peoples Park Tavern', drinkA: 'Cocktail', drinkB: 'Cocktail', par: 2, lat: 51.5415990502505, lng: -0.0378202354885777 },
+    { pub: 'The Lauriston', drinkA: 'Spirit Mixer', drinkB: 'Spirit Mixer', par: 2, lat: 51.53792602747728, lng: -0.04508932649695302 },
+    { pub: 'Royal Inn on the Park', drinkA: 'Guiness', drinkB: '2 x Double Whiskey', par: 4, lat: 51.53680097695395, lng: -0.04328406325789921 },
+    { pub: 'The Approach Tavern', drinkA: 'Jagerbomb', drinkB: 'Jagerbomb', par: 1, lat: 51.53132956472087, lng: -0.05172431396274521 },
     { pub: 'Sebright Arms', drinkA: 'VK', drinkB: 'Smirnoff', par: 1, lat: 51.532039688673585, lng: -0.06306789819191375 },
 ];
 
