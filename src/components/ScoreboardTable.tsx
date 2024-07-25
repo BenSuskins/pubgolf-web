@@ -28,27 +28,20 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const getScoreColor = (score: number, par: number): string => {
-    if (score === par || score === 0) {
-        return '#fff';
-    } else if (score < par) {
-        return '#389e5c';
-    } else {
+    if (score > par) {
         return '#f44336';
     }
+    return '#fff';
 };
 
 function stringAvatar(name: string) {
-    const colors = ['#FF5733', '#33FF57', '#3357FF', '#F033FF', '#33FFF6'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)]; 
-    
     const nameParts = name.split(' ');
     const initials = nameParts.length > 1
         ? `${nameParts[0][0]}${nameParts[1][0]}`
-        : `${nameParts[0][0]}`;
+        : `${Array.from(name)[0].toUpperCase()}`;
 
     return {
         sx: {
-            bgcolor: randomColor,
             mr: 2
         },
         children: initials,

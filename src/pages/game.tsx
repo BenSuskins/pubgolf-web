@@ -71,7 +71,7 @@ const GamePage = () => {
             p: 3,
             mx: 'auto',
             my: 2,
-            maxWidth: '1000px',
+            maxWidth: '.99',
             backgroundColor: '#4a555a', // Dark background to match the theme
             borderRadius: 2,
             boxShadow: 5,
