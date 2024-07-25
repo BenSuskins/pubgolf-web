@@ -1,8 +1,7 @@
 export const rules = [
     "Each player must drink the designated drink at each stop.",
     "The par score for each drink represents the expected number of sips to finish the drink.",
-    "If you finish your drink in fewer sips than par, your score for that hole is the number of sips you took.",
-    "If you take more sips than par, your score for that hole is the number of sips you took.",
+    "Your score for a hole is the number of sips you took.",
     "Each sip can last at most 1 Minute.",
     "Doing additional drinks will lower your score as decided by the referee.",
     "Skipping a Drink: +5 Points",
