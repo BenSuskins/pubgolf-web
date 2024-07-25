@@ -4,7 +4,9 @@ export const rules = [
     "If you finish your drink in fewer sips than par, your score for that hole is the number of sips you took.",
     "If you take more sips than par, your score for that hole is the number of sips you took.",
     "Each sip can last at most 1 Minute.",
-    "Doing additional drinks will lower your score as decided by the referee."
+    "Doing additional drinks will lower your score as decided by the referee.",
+    "Skipping a Drink: +5 Points",
+    "Vomitting: +10 Points"
 ];
 
 export const drinks: DrinkInfo[] = [

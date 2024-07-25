@@ -28,7 +28,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const getScoreColor = (score: number, par: number): string => {
-    if (score === par) {
+    if (score === par || score === 0) {
         return '#fff';
     } else if (score < par) {
         return '#389e5c';
@@ -36,38 +36,6 @@ const getScoreColor = (score: number, par: number): string => {
         return '#f44336';
     }
 };
-
-function stringToColor(string: string) {
-    let hash = 0;
-    let i;
-
-    for (i = 0; i < string.length; i += 1) {
-        hash = string.charCodeAt(i) + ((hash << 5) - hash);
-    }
-
-    let color = '#';
-
-    for (i = 0; i < 3; i += 1) {
-        const value = (hash >> (i * 8)) & 0xff;
-        color += `00${value.toString(16)}`.slice(-2);
-    }
-    return color;
-}
-
-function stringAvatar(name: string) {
-    const nameParts = name.split(' ');
-    const initials = nameParts.length > 1
-        ? `${nameParts[0][0]}${nameParts[1][0]}`
-        : `${nameParts[0][0]}`;
-
-    return {
-        sx: {
-            bgcolor: stringToColor(name),
-            mr: 2
-        },
-        children: initials,
-    };
-}
 
 const ScoreboardTable: React.FC<ScoreboardTableProps> = ({ players }) => {
     return (
@@ -87,7 +55,6 @@ const ScoreboardTable: React.FC<ScoreboardTableProps> = ({ players }) => {
                         <StyledTableRow key={index}>
                             <StickyTableCell component="th" scope="row">
                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                    <Avatar {...stringAvatar(player.name)} />
                                     {player.name}
                                 </Box>
                             </StickyTableCell>
