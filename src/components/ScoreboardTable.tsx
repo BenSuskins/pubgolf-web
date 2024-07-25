@@ -54,19 +54,36 @@ const ScoreboardTable: React.FC<ScoreboardTableProps> = ({ players }) => {
             <Table stickyHeader aria-label="scoreboard table">
                 <TableHead>
                     <TableRow>
-                        <StyledTableCell>
+                        <StyledTableCell
+                            sx={{
+                                position: 'sticky',
+                                left: 0,
+                                zIndex: 2,
+                                width: 200,
+                            }}>
                             Name
                         </StyledTableCell>
                         {drinks.map((_, index) => (
-                            <StyledTableCell key={index} align="right">Hole {index + 1}</StyledTableCell>
+                            <StyledTableCell
+                                sx={{
+                                    zIndex: 1
+                                }}
+                                key={index} align="right">Hole {index + 1}</StyledTableCell>
                         ))}
-                        <StyledTableCell align="right">Total</StyledTableCell>
+                        <StyledTableCell
+                            sx={{
+                                zIndex: 1
+                            }}
+                            align="right">Total</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {players.map((player, index) => (
                         <StyledTableRow key={index}>
                             <StickyTableCell
+                                sx={{
+                                    zIndex: 1
+                                }}
                                 component="th"
                                 scope="row"
                             >
