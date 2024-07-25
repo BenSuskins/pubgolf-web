@@ -37,6 +37,24 @@ const getScoreColor = (score: number, par: number): string => {
     }
 };
 
+function stringAvatar(name: string) {
+    const colors = ['#FF5733', '#33FF57', '#3357FF', '#F033FF', '#33FFF6'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)]; 
+    
+    const nameParts = name.split(' ');
+    const initials = nameParts.length > 1
+        ? `${nameParts[0][0]}${nameParts[1][0]}`
+        : `${nameParts[0][0]}`;
+
+    return {
+        sx: {
+            bgcolor: randomColor,
+            mr: 2
+        },
+        children: initials,
+    };
+}
+
 const ScoreboardTable: React.FC<ScoreboardTableProps> = ({ players }) => {
     return (
         <TableContainer component={Paper} sx={{ overflowX: 'auto', mt: 2, boxShadow: 3 }}>
@@ -55,6 +73,7 @@ const ScoreboardTable: React.FC<ScoreboardTableProps> = ({ players }) => {
                         <StyledTableRow key={index}>
                             <StickyTableCell component="th" scope="row">
                                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                    <Avatar {...stringAvatar(player.name)} />
                                     {player.name}
                                 </Box>
                             </StickyTableCell>
