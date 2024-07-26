@@ -4,6 +4,7 @@ export const rules = [
     "Your score for a hole is the number of sips you took.",
     "Each sip can last at most 1 Minute.",
     "Doing additional drinks will lower your score as decided by the referee.",
+    "A maximum of 4 drinks can be done per hole.",
     "Skipping a Drink: +5 Points",
     "Spilled Drink: +3 Points",
     "Vomitting: +10 Points",
