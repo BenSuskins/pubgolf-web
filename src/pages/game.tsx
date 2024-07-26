@@ -43,7 +43,7 @@ const GamePage = () => {
     };
 
     const handleShare = () => {
-        setShowDialog(true); // Show the ShareDialog
+        setShowDialog(true);
     };
 
     const handleCloseDialog = () => {
@@ -77,7 +77,7 @@ const GamePage = () => {
             boxShadow: 5,
         }}>
             <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
-                Scoreboard
+                Scores
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>

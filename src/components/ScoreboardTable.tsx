@@ -7,14 +7,14 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.common.white,
     fontWeight: 'bold',
-    zIndex: 2, // Higher z-index for header cells
+    zIndex: 2,
 }));
 
 const StickyTableCell = styled(TableCell)(({ theme }) => ({
     position: 'sticky',
     left: 0,
     backgroundColor: theme.palette.background.paper,
-    zIndex: 1, // Lower z-index for sticky player name cells
+    zIndex: 1,
     fontWeight: 'bold',
 }));
 
