@@ -14,7 +14,7 @@ export const drinks: DrinkInfo[] = [
     { pub: 'The Lock Inn', drinkA: 'Tequila', drinkB: 'Sambuca', par: 1, lat: 51.54704221722351, lng: -0.024302005296492523 },
     { pub: 'Beer Merchants Tap', drinkA: 'Beer', drinkB: 'Double Vodka & Single Vodka w/ Mixer', par: 3, lat: 51.544537514752406, lng: -0.024089676469998805 },
     { pub: 'No 90', drinkA: 'Wine', drinkB: 'Double Gin', par: 2, lat: 51.5441483399746, lng: -0.022686143228642857 },
-    { pub: 'The Lord Napier Star', drinkA: 'Cider', drinkB: 'Double Rum w/ Mixer', par: 2, lat: 51.54317410748569, lng: -0.025277542906490397 },
+    { pub: 'Crate', drinkA: 'Cider', drinkB: 'Double Rum w/ Mixer', par: 2, lat: 51.5429688274002, lng: -0.022114979069336824 },
     { pub: 'Peoples Park Tavern', drinkA: 'Cocktail', drinkB: 'Cocktail', par: 2, lat: 51.5415990502505, lng: -0.0378202354885777 },
     { pub: 'The Lauriston', drinkA: 'Spirit Mixer', drinkB: 'Any Spirit w/ Mixer', par: 2, lat: 51.53792602747728, lng: -0.04508932649695302 },
     { pub: 'Royal Inn on the Park', drinkA: 'Guiness', drinkB: '2 x Double Whiskey w/ Mixer', par: 4, lat: 51.53680097695395, lng: -0.04328406325789921 },
