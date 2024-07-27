@@ -7,6 +7,7 @@ export default function Document() {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-title" content="Pub Golf"/>
+        <meta name="theme-color" content="#2b363b"/>
       </Head>
       <body>
         <Main />
