@@ -1,17 +1,13 @@
 import { useRouter } from 'next/router';
 import { Box, Button, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, List, ListItem, ListItemText } from '@mui/material';
 import { styled } from '@mui/system';
-import dynamic from 'next/dynamic';
 import { drinks, rules, routes } from '@/utils/constants';
-
-// Dynamically import MapComponent
-const DynamicMapComponent = dynamic(() => import('../components/Map'), { ssr: false });
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.common.white,
     fontWeight: 'bold',
-    zIndex: 2, // Higher z-index for header cells
+    zIndex: 2,
 }));
 
 const HowToPlayPage = () => {
@@ -79,14 +75,6 @@ const HowToPlayPage = () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </Paper>
-            <Paper sx={{ p: 3, width: '100%', boxShadow: 3, mb: 3 }}>
-                <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2 }}>
-                    Route
-                </Typography>
-                <Box sx={{ width: '100%', height: '400px' }}>
-                    <DynamicMapComponent drinks={drinks} />
-                </Box>
             </Paper>
             <Button
                 variant="outlined"
