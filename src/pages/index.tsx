@@ -58,7 +58,7 @@ const Home: NextPage = () => {
         boxShadow: 5,
       }}>
         <Typography variant="h2" gutterBottom component="h1">
-          Welcome to Pub Golf
+          Welcome to Pub Golf!
         </Typography>
         <Typography variant="subtitle1" gutterBottom sx={{ color: '#bbbbbb' }}>
           Pub Golf is a fun, social game that combines the challenge of golf scoring with the enjoyment of visiting your favorite pubs. Join a game or create a new one to start your adventure!
