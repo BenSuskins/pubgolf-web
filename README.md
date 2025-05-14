@@ -1,3 +1,5 @@
+**This repo has been archived, check out this [repo](https://github.com/BenSuskins/pubgolf) which contains both the backend and frontend.**
+
 # Pub Golf UI
 
 This is a Frontend for the [Pubgolf](https://github.com/BenSuskins/pubgolf) application.
